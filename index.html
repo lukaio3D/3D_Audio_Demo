@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
   </head>
   <body>
+
     <a-scene
       xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
@@ -26,7 +27,10 @@
 
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
 
-      <a-entity environment="preset: starry; groundColor: #445; grid: none" hide-in-ar-mode></a-entity>
+      <a-entity
+        environment="preset: starry; groundColor: #445; grid: none"
+        hide-in-ar-mode
+      ></a-entity>
 
       <a-entity
         light="intensity: 1.44; type: point"
@@ -78,13 +82,35 @@
       <a-entity
         id="soundBall"
         geometry="primitive: sphere; radius: 0.23"
-        position="0 0.20387 3.86421"
+        position="-4 0.3 0"
         sound__birdwhistle3d="src: src\339326__inspectorj__bird-whistling-a.mp3; autoplay: true; loop: true"
         onclick="BallClickFunktion()"
       ></a-entity>
 
-      <a-image position="0 2 -3.5" scale="2 2 2" src="src\muppet.gif"></a-image>
+      <a-image
+        position="0 1.5 -3.5"
+        scale="2 3 2"
+        src="src\dog-3389729_1280.jpg"
+      ></a-image>
+      <a-image
+        position="0 1.5 3.5"
+        rotation="0 180 0"
+        scale="3 2 3"
+        src="src\egg-2187345_1280.png"
+      ></a-image>
+      <a-image
+        position="3.5 2 0"
+        scale="2 1.3 1"
+        rotation="0 90 0"
+        src="src\kermit-2687975_1280.jpg"
+      ></a-image>
     </a-scene>
+    <h1
+    class="overlay"
+    style="position: fixed; bottom: 0; width: screen; justify-content: center;"
+  >
+    Klicken Sie auf den Vorhang mit dem Sound
+  </h1>
   </body>
   <script src="app.js"></script>
 </html>
