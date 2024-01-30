@@ -6,6 +6,7 @@
     <title>3D Audio Demo</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
   </head>
   <body>
     <a-scene
@@ -20,11 +21,12 @@
       </a-assets>
 
       <a-camera>
-        <a-cursor></a-cursor>
+        <!--         <a-cursor></a-cursor> -->
       </a-camera>
 
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
-      <a-cursor></a-cursor>
+
+      <a-entity environment="preset: starry; groundColor: #445; grid: none" hide-in-ar-mode></a-entity>
 
       <a-entity
         light="intensity: 1.44; type: point"
@@ -80,6 +82,8 @@
         sound__birdwhistle3d="src: src\339326__inspectorj__bird-whistling-a.mp3; autoplay: true; loop: true"
         onclick="BallClickFunktion()"
       ></a-entity>
+
+      <a-image position="0 2 -3.5" scale="2 2 2" src="src\muppet.gif"></a-image>
     </a-scene>
   </body>
   <script src="app.js"></script>
