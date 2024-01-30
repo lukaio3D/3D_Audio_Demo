@@ -1,21 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Audio Demo</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-</head>
-<body>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
     <a-scene xr-mode-ui="XRMode: xr">
-        <a-entity light="intensity: 1.44; type: point" id="light" position="0 2.77844 -0.41772"></a-entity>
-        <a-gltf-model src="src\Vorhang.glb" gltf-model="src\Vorhang.glb" position="-1.5 0 -3"></a-gltf-model>
-        <a-gltf-model src="src\Vorhang.glb" gltf-model="src\Vorhang.glb" position="-2 0 1.5" rotation="0 92.84379999638399 0"></a-gltf-model>
-        <a-gltf-model src="src\Vorhang.glb" gltf-model="src\Vorhang.glb" position="1.5 0 3" rotation="0 177.52868099010507 0"></a-gltf-model>
-        <a-gltf-model src="src\Vorhang.glb" gltf-model="src\Vorhang.glb" position="2.5 0 1.5" rotation="0 89.45819238495595 0"></a-gltf-model>
-<!--         <a-gltf-model src="src\Deepmotion_Demo.glb"></a-gltf-model> -->
-        <a-entity geometry="primitive: sphere; radius: 0.23" position="0 0.20387 3.86421" sound__birdwhistle3d="src: src\339326__inspectorj__bird-whistling-a.mp3; autoplay: true" animation="property: position; to: 0 0 0; loop: false; dur: 10000"></a-entity>
+      <a-assets>
+        <a-asset-item
+          id="VorhangGLB"
+          src="src\Vorhang_doppelt_anim.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-camera></a-camera>
+
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+
+      <a-entity
+        light="intensity: 1.44; type: point"
+        id="light"
+        position="0 2.77844 -0.41772"
+      ></a-entity>
+
+      <a-gltf-model
+        id="Vorhang1"
+        gltf-model="#VorhangGLB"
+        position="0 0 -3"
+        animation-mixer="clip:none"
+        cursor-listener
+        onclick="VorhangOeffnen(this)"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        id="Vorhang2"
+        gltf-model="#VorhangGLB"
+        position="-3 0 0"
+        rotation="0 90 0"
+        animation-mixer="clip:none"
+        cursor-listener
+        onclick="VorhangOeffnen(this)"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        id="Vorhang3"
+        gltf-model="#VorhangGLB"
+        position="0 0 3"
+        rotation="0 180 0"
+        animation-mixer="clip:none"
+        cursor-listener
+        onclick="VorhangOeffnen(this)"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        id="Vorhang4"
+        gltf-model="#VorhangGLB"
+        position="3 0 0"
+        rotation="0 90 0"
+        animation-mixer="clip:none"
+        cursor-listener
+        onclick="VorhangOeffnen(this)"
+      ></a-gltf-model>
+
+      <!--         <a-gltf-model src="src\Deepmotion_Demo.glb"></a-gltf-model> -->
+
+      <a-entity
+        id="soundBall"
+        geometry="primitive: sphere; radius: 0.23"
+        position="0 0.20387 3.86421"
+        sound__birdwhistle3d="src: src\339326__inspectorj__bird-whistling-a.mp3; autoplay: true; loop: true"
+        onclick="BallClickFunktion()"
+      ></a-entity>
+
     </a-scene>
-    
-</body>
+  </body>
+  <script src="app.js"></script>
 </html>
