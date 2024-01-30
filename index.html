@@ -10,7 +10,7 @@
   <body>
     <a-scene
       xr-mode-ui="XRMode: xr"
-      webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local"
+      webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
     >
       <a-assets>
         <a-asset-item
@@ -19,9 +19,12 @@
         ></a-asset-item>
       </a-assets>
 
-      <a-camera></a-camera>
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
 
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+      <a-cursor></a-cursor>
 
       <a-entity
         light="intensity: 1.44; type: point"
