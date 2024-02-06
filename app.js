@@ -53,10 +53,10 @@ Vorhang1.onclick = () => {
     SchreibeDialog(
       "Das war leider falsch! Hören Sie genau hin und finden Die den richtigen Vorhang"
     );
-  }, 5000);
+  }, 10000);
   setTimeout(() => {
     VorhangSchließen(Vorhang1)
-  }, 7000);
+  }, 11000);
 
 };
 
@@ -67,10 +67,10 @@ Vorhang4.onclick = () => {
     SchreibeDialog(
       "Das war leider falsch! Hören Sie genau hin und finden Die den richtigen Vorhang"
     );
-  }, 5000);
+  }, 10000);
   setTimeout(() => {
     VorhangSchließen(Vorhang4)
-  }, 7000);
+  }, 11000);
 
 };
 
@@ -81,10 +81,10 @@ Vorhang3.onclick = () => {
     SchreibeDialog(
       "Das war leider falsch! Hören Sie genau hin und finden Die den richtigen Vorhang"
     );
-  }, 5000);
+  }, 10000);
   setTimeout(() => {
     VorhangSchließen(Vorhang3)
-  }, 7000);
+  }, 11000);
 
 };
 
