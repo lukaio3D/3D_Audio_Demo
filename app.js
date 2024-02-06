@@ -33,9 +33,6 @@ const WelcomeUser = () => {
   SchreibeDialog(
     "Hallo Besucher, <br> hinter einem der Vorhänge ist ein Sound versteckt. Können Sie ihn finden?"
   );
-  setTimeout(() => {
-    keyboard3D.components.sound__birdwhistle3d.playSound();
-  }, 3000);
 
   setTimeout(() => {
     SchreibeDialog(
@@ -45,6 +42,10 @@ const WelcomeUser = () => {
 };
 
 const VorhangHandler = () => {};
+
+const startAudio = () => {
+  keyboard3D.components.sound__birdwhistle3d.playSound();
+};
 
 //Ausführungslogik
 WelcomeUser();
