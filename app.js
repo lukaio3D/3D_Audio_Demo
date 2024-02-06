@@ -1,3 +1,16 @@
+
+
+//Elemente aus dem DOM holen
+const Vorhang1 = document.getElementById("Vorhang1");
+const Vorhang2 = document.getElementById("Vorhang2");
+const Vorhang3 = document.getElementById("Vorhang3");
+const Vorhang4 = document.getElementById("Vorhang4");
+const Vorhaenge = [Vorhang1, Vorhang2, Vorhang3, Vorhang4];
+const soundBall = document.getElementById("soundBall")
+const keyboard3D = document.getElementById("Keyboard3D")
+const dialogBox = document.getElementById("dialogBox");
+
+//Funktionen
 const VorhangSchließen = (vorhangName) => {
   vorhangName.setAttribute("animation-mixer", {
     clip: "VorhangZu",
@@ -12,20 +25,6 @@ function VorhangOeffnen(vorhangName) {
     loop: "once",
     clampWhenFinished: true,
   });
-}
-
-//Elemente aus dem DOM holen
-const Vorhang1 = document.getElementById("Vorhang1");
-const Vorhang2 = document.getElementById("Vorhang2");
-const Vorhang3 = document.getElementById("Vorhang3");
-const Vorhang4 = document.getElementById("Vorhang4");
-const Vorhaenge = [Vorhang1, Vorhang2, Vorhang3, Vorhang4];
-const soundBall = document.getElementById("soundBall")
-const dialogBox = document.getElementById("dialogBox");
-
-//Funktionen
-function BallClickFunktion() {
-  console.log("Moin");
 }
 
 const SchreibeDialog = (dialogtext) => (dialogBox.innerHTML = dialogtext);
@@ -97,7 +96,7 @@ Vorhang2.onclick = () => {
     );
   }, 5000);
   setTimeout(() => {
-    soundBall.setAttribute("animation", "property: position; to: -1 0.3 0; dur: 7000;")
+    keyboard3D.setAttribute("animation", "property: position; to: -1 0.3 0; dur: 7000;")
   }, 5000);
 
 };
