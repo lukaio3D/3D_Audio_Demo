@@ -1,6 +1,7 @@
 // Intro 
 const introDOM = document.getElementById("introDOM")
 const sceneDOM = document.getElementById("sceneDOM")
+const scene = document.getElementById("scene")
 const startButton = document.getElementById("startButton")
 
 startButton.onclick = () => {

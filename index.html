@@ -14,6 +14,8 @@
     <!-- Credits
     "Yamaha Keyboard" (https://skfb.ly/o9VXO) by Ryan_Nein is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). -->
     <a-scene
+      id="scene"
+      class=""
       xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
@@ -128,10 +130,10 @@
         src="src\kermit-2687975_1280.jpg"
       ></a-image>
     </a-scene>
-    
+
       <!-- introDOM -->
       <div id="introDOM" class="overlay fixed top-0 left-0 w-screen h-screen  bg-black flex flex-col gap-8 justify-center items-center z-50">
-        <h1 class="text-gray-100 text-align-center text-5xl">3D Audio Experience</h1>
+        <h1 class="text-gray-100 text-center text-5xl">3D Audio Experience</h1>
         <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl">Start</button>
       </div>
 
