@@ -1,3 +1,16 @@
+// Intro 
+const introDOM = document.getElementById("introDOM")
+const sceneDOM = document.getElementById("sceneDOM")
+const startButton = document.getElementById("startButton")
+
+startButton.onclick = () => {
+  introDOM.style.visibility = "hidden"
+  sceneDOM.style.visibility = "block"
+  keyboard3D.components.sound.playSound()
+}
+
+// 3D Anwendung
+
 //Elemente aus dem DOM holen
 const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
