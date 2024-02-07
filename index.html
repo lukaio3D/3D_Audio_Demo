@@ -128,22 +128,17 @@
         src="src\kermit-2687975_1280.jpg"
       ></a-image>
     </a-scene>
-
-    <!-- overlayDOM -->
-    <div id="theBigDOM" class="overlay fixed top-0 left-0 w-screen h-screen ">
-
+    
       <!-- introDOM -->
-      <div id="introDOM" class="w-full h-full bg-black flex flex-col gap-8 justify-center items-center z-50">
+      <div id="introDOM" class="overlay fixed top-0 left-0 w-screen h-screen  bg-black flex flex-col gap-8 justify-center items-center z-50">
         <h1 class="text-gray-100 text-align-center text-5xl">3D Audio Experience</h1>
         <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl">Start</button>
       </div>
 
       <!-- sceneDOM -->
-      <div id="sceneDOM" class="fixed bottom-16 w-full flex justify-center hidden">
+      <div id="sceneDOM" class="overlay fixed bottom-16 w-screen flex justify-center hidden">
         <h1 id="dialogBox" class="px-10 text-gray-100"></h1>
       </div>
-
-    </div>
 
   </body>
   <script src="app.js"></script>

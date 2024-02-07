@@ -4,7 +4,7 @@ const sceneDOM = document.getElementById("sceneDOM")
 const startButton = document.getElementById("startButton")
 
 startButton.onclick = () => {
-  introDOM.style.visibility = "hidden"
+  introDOM.remove()
   sceneDOM.style.visibility = "block"
   keyboard3D.components.sound.playSound()
 }
