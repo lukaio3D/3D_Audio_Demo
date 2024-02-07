@@ -6,9 +6,19 @@ const startButton = document.getElementById("startButton")
 
 startButton.onclick = () => {
   introDOM.remove()
-  sceneDOM.style.visibility = "block"
+  sceneDOM.style.visibility = "flex"
   keyboard3D.components.sound.playSound()
+  SchreibeDialog(
+    "Hallo Besucher, <br> hinter einem der Vorhänge ist ein Sound versteckt. Können Sie ihn finden?"
+  );
+  setTimeout(() => {
+    SchreibeDialog(
+      "Klicken Sie auf den Vorhang hinter dem sich der Sound befindet"
+    );
+  }, 7000);
 }
+
+sceneDOM.style.visibility = "none"
 
 // 3D Anwendung
 
@@ -80,11 +90,4 @@ Vorhang3.onclick = VorhangHandler.bind(Vorhang3);
 Vorhang4.onclick = VorhangHandler.bind(Vorhang4);
 
 //Ausführungslogik
-SchreibeDialog(
-  "Hallo Besucher, <br> hinter einem der Vorhänge ist ein Sound versteckt. Können Sie ihn finden?"
-);
-setTimeout(() => {
-  SchreibeDialog(
-    "Klicken Sie auf den Vorhang hinter dem sich der Sound befindet"
-  );
-}, 7000);
+
