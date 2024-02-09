@@ -103,17 +103,17 @@
       id="ghostParent"
       
         rotation="0 0 0"
-        animation="property: rotation; to: 0 360 0; loop: false; easing:linear; dur: 10000">
+        xanimation="property: rotation; to: 0 360 0; loop: false; easing:linear; dur: 10000">
       >
         <a-gltf-model
         id="ghost3D"
         gltf-model="#ghostGLB"
-        visible="false"
-        position="1 0.3 0"
+        visible="true"
+        position="0 1 -1.5"
         rotation="0 0 0"
         scale="0.5 0.5 0.5"
-        animation="property: position; to: -4 0.3 0; loop: false; easing:linear; dur: 5000"
-        animation-mixer="clip:none"
+        xanimation="property: position; to: -4 0.3 0; loop: false; easing:linear; dur: 5000"
+        animation-mixer="clip:Armature|Action_Idle"
         sound="src: #pianoSound; loop: true;"
       ></a-gltf-model>
       </a-entity>
@@ -127,7 +127,7 @@
         animation
       ></a-entity> -->
 
-      <a-video position="0 1 -4" scale="2 3 2"></a-video>
+<!--       <a-video position="0 1 -4" scale="2 3 2"></a-video>
       <a-image
         position="0 1 4"
         rotation="0 180 0"
@@ -140,7 +140,7 @@
         rotation="0 90 0"
         src="src\kermit-2687975_1280.jpg"
       ></a-image>
-    </a-scene>
+    </a-scene> -->
 
       <!-- introDOM -->
       <div id="introDOM" class="overlay fixed top-0 left-0 w-screen h-screen  bg-black flex flex-col gap-8 justify-center items-center z-50">
