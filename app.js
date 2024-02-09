@@ -69,6 +69,12 @@ function VorhangHandler() {
         "property: position; to: -1 0.3 0; easing: easeInOutQuad; dur: 7000;"
       );
     }, 5000);
+    setTimeout(() => {
+      ghost3D.setAttribute(
+        "visible",
+        "true"
+      );
+    }, 5000);
   } else {
     SchreibeDialog("");
     VorhangOeffnen(this);
