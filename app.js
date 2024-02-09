@@ -43,6 +43,9 @@ startButton.onclick = () => {
       "Klicken Sie auf den Vorhang hinter dem sich der Sound befindet"
     );
   }, 7000);
+  setTimeout(() => {
+    hideGhost();
+  }, 3000);
 };
 
 sceneDOM.style.visibility = "none";
@@ -117,6 +120,4 @@ Vorhang4.onclick = VorhangHandler.bind(Vorhang4);
 
 //Ausführungslogik
 
-setTimeout(() => {
-  hideGhost();
-}, 3000);
+
