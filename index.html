@@ -16,7 +16,7 @@
     <a-scene
       id="scene"
       class=""
-      xr-mode-ui="XRMode: ar"
+      xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
     >
@@ -41,11 +41,11 @@
         ></a-cursor>
       </a-camera>
 
-      <a-entity
+<!--       <a-entity
         id="mouseCursor"
         cursor="rayOrigin: mouse"
         raycaster="objects: .collidable"
-      ></a-entity>
+      ></a-entity> -->
 
       <a-entity
         environment="preset: starry; groundColor: #445; grid: none"
@@ -60,7 +60,6 @@
 
       <a-gltf-model
         id="Vorhang1"
-        class="collidable"
         gltf-model="#VorhangGLB"
         position="0 0 -3"
         animation-mixer="clip:none"
@@ -69,7 +68,6 @@
 
       <a-gltf-model
         id="Vorhang2"
-        class="collidable"
         gltf-model="#VorhangGLB"
         position="-3 0 0"
         rotation="0 90 0"
@@ -79,7 +77,6 @@
 
       <a-gltf-model
         id="Vorhang3"
-        class="collidable"
         gltf-model="#VorhangGLB"
         position="0 0 3"
         rotation="0 180 0"
@@ -89,7 +86,6 @@
 
       <a-gltf-model
         id="Vorhang4"
-        class="collidable"
         gltf-model="#VorhangGLB"
         position="3 0 0"
         rotation="0 270 0"
@@ -100,10 +96,7 @@
       <!--         <a-gltf-model src="src\Deepmotion_Demo.glb"></a-gltf-model> -->
 
       <a-entity 
-      id="ghostParent"
-      
-        rotation="0 0 0"
-        xanimation="property: rotation; to: 0 360 0; loop: false; easing:linear; dur: 10000">
+      id="ghostParent">
       >
         <a-gltf-model
         id="ghost3D"
@@ -112,7 +105,6 @@
         position="0 1 -1.5"
         rotation="0 0 0"
         scale="0.5 0.5 0.5"
-        xanimation="property: position; to: -4 0.3 0; loop: false; easing:linear; dur: 5000"
         animation-mixer="clip:Armature|Action_Idle"
         sound="src: #pianoSound; loop: true;"
       ></a-gltf-model>
@@ -139,18 +131,34 @@
         scale="2 1.5 1"
         rotation="0 90 0"
         src="src\kermit-2687975_1280.jpg"
-      ></a-image>
-    </a-scene> -->
+      ></a-image> -->
+    </a-scene>
 
       <!-- introDOM -->
-      <div id="introDOM" class="overlay fixed top-0 left-0 w-screen h-screen  bg-black flex flex-col gap-8 justify-center items-center z-50">
+      <div id="introDOM" class="overlay fixed top-0 left-0 w-screen h-screen  bg-black flex flex-col gap-8 justify-center items-center z-40">
         <h1 class="text-gray-100 text-center text-5xl">3D Audio Experience</h1>
         <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl">Start</button>
       </div>
 
       <!-- sceneDOM -->
-      <div id="overlay" class="flex justify-center items-end">
-        <h1 id="dialogBox" class="px-2 pb-16 text-gray-100 text-center"></h1>
+      <div id="overlay" class="flex flex-col justify-between items-center h-full text-gray-100">
+        <div>
+          <p id="korrekteVersucheDOM">Richtig geraten: 0</p>
+          <p id="fehlVersucheDOM">Falsch geraten: 0</p>
+        </div>
+        <h1 id="dialogBox" class="px-2 pb-16  text-center">Hallo Hallo</h1>
+      </div>
+
+      <!-- WinnerDOM -->
+      <div id="winnerDOM" class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden">
+        <h1 class="text-gray-100 text-center text-5xl">Du hast gewonnen, Glückwunsch!</h1>
+        <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl" onclick="reloadApp()">Neustart</button>
+      </div>
+
+      <!-- LoserDOM -->
+      <div id="loserDOM" class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden">
+        <h1 class="text-gray-100 text-center text-5xl">Du hast verloren, wie Schade!</h1>
+        <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl" onclick="reloadApp()">Neustart</button>
       </div>
 
   </body>
