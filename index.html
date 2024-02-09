@@ -16,12 +16,12 @@
     <a-scene
       id="scene"
       class=""
-      xr-mode-ui="XRMode: xr"
+      xr-mode-ui="XRMode: ar"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
     >
       <a-assets>
-        <audio id="pianoSound" src="src\pianoMusic.mp3" preload="auto" ></audio>
+        <audio id="pianoSound" src="src\278903__syntheway__guardians-of-limbo-magnus-choir-vst-vst3-audio-unit-preset-by-syntheway.mp3" preload="auto" ></audio>
         <a-asset-item
           id="ghostGLB"
           src="src\fantasma_ghost_phantom.glb"
@@ -111,7 +111,7 @@
         position="-4 0.3 0"
         rotation="0 0 0"
         scale="0.5 0.5 0.5"
-
+        animation=""
         animation-mixer="clip:none"
         sound="src: #pianoSound; loop: true;"
       ></a-gltf-model>
@@ -149,7 +149,7 @@
 
       <!-- sceneDOM -->
       <div id="overlay" class="flex justify-center items-end">
-        <h1 id="dialogBox" class="px-10 text-gray-100"></h1>
+        <h1 id="dialogBox" class="px-2 pb-16 text-gray-100 text-center"></h1>
       </div>
 
   </body>
