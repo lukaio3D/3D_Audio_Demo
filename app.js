@@ -1,13 +1,13 @@
 // Intro 
 const introDOM = document.getElementById("introDOM")
-const sceneDOM = document.getElementById("sceneDOM")
+const sceneDOM = document.getElementById("overlay")
 const scene = document.getElementById("scene")
 const startButton = document.getElementById("startButton")
 
 startButton.onclick = () => {
   introDOM.remove()
   sceneDOM.style.visibility = "flex"
-  keyboard3D.components.sound.playSound()
+  ghost3D.components.sound.playSound()
   SchreibeDialog(
     "Hallo Besucher, <br> hinter einem der Vorhänge ist ein Sound versteckt. Können Sie ihn finden?"
   );
@@ -28,7 +28,7 @@ const Vorhang2 = document.getElementById("Vorhang2");
 const Vorhang3 = document.getElementById("Vorhang3");
 const Vorhang4 = document.getElementById("Vorhang4");
 const soundBall = document.getElementById("soundBall");
-const keyboard3D = document.getElementById("Keyboard3D");
+const ghost3D = document.getElementById("ghost3D");
 const pianoSound = document.getElementById("pianoSound");
 const dialogBox = document.getElementById("dialogBox");
 const theBigDOM = document.getElementById("theBigDOM");
@@ -64,7 +64,7 @@ function VorhangHandler() {
       SchreibeDialog("Sie haben den Sound gefunden, Glückwunsch!");
     }, 5000);
     setTimeout(() => {
-      keyboard3D.setAttribute(
+      ghost3D.setAttribute(
         "animation",
         "property: position; to: -1 0.3 0; easing: easeInOutQuad; dur: 7000;"
       );

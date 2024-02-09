@@ -23,8 +23,8 @@
       <a-assets>
         <audio id="pianoSound" src="src\pianoMusic.mp3" preload="auto" ></audio>
         <a-asset-item
-          id="KeyboardGLB"
-          src="src\yamaha_keyboard.glb"
+          id="ghostGLB"
+          src="src\fantasma_ghost_phantom.glb"
         ></a-asset-item>
         <a-asset-item
           id="VorhangGLB"
@@ -99,14 +99,24 @@
 
       <!--         <a-gltf-model src="src\Deepmotion_Demo.glb"></a-gltf-model> -->
 
-      <a-gltf-model
-        id="Keyboard3D"
-        gltf-model="#KeyboardGLB"
-        position="-4 0.3 0"
+      <a-entity 
+      id="ghostParent"
+      
         rotation="0 90 0"
-        animation
+        animation="property: rotation; to: 0 360 0; loop: true; easing:easeInOutQuad; dur: 10000">
+      >
+        <a-gltf-model
+        id="ghost3D"
+        gltf-model="#ghostGLB"
+        position="-4 0.3 0"
+        rotation="0 0 0"
+        scale="0.5 0.5 0.5"
+
+        animation-mixer="clip:none"
         sound="src: #pianoSound; loop: true;"
       ></a-gltf-model>
+      </a-entity>
+
 
       <!--       <a-entity
         id="soundBall"
@@ -138,7 +148,7 @@
       </div>
 
       <!-- sceneDOM -->
-      <div id="sceneDOM" class="overlay fixed bottom-16 w-screen flex justify-center">
+      <div id="overlay" class="flex justify-center items-end">
         <h1 id="dialogBox" class="px-10 text-gray-100"></h1>
       </div>
 
