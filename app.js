@@ -99,7 +99,7 @@ function VorhangHandler() {
   }
 }
 
-function hideGhost(i) {
+function hideGhost() {
   let randomRotation = rotationsGhostParent[Math.floor(Math.random()*rotationsGhostParent.length)]
   ghost3D.object3D.visible = false
   ghost3D.setAttribute("animation__position", "property: position; to: 0 1 -4; easing: easeInOutQuad; dur: 7000");
@@ -118,5 +118,5 @@ Vorhang4.onclick = VorhangHandler.bind(Vorhang4);
 //Ausführungslogik
 
 setTimeout(() => {
-  hideGhost(1);
-}, 1000);
+  hideGhost();
+}, 3000);
