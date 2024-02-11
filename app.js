@@ -49,8 +49,6 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   sceneDOM.style.visibility = "flex";
-  ambienceSound.volume = 0.3
-  ambienceSound.play();
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
   );
@@ -66,7 +64,6 @@ startButton.onclick = () => {
   }, 13000);
   setTimeout(() => {
     hideGhost();
-    ambienceSound.pause()
   }, 19500);
 }; 
 
