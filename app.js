@@ -66,6 +66,7 @@ startButton.onclick = () => {
   }, 13000);
   setTimeout(() => {
     hideGhost();
+    ambienceSound.pause()
   }, 19500);
 }; 
 
