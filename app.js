@@ -284,11 +284,9 @@ function hideGhost() {
 
 const checkGameState = () => {
   if (korrektGeraten >= 3) {
-    ambienceSound.pause()
     ghost3D.components.sound.stopSound()
     winnerDOM.style.display = "flex";
   } else if (falschGeraten >= 3) {
-    ambienceSound.pause()
     ghost3D.components.sound.stopSound()
     loserDOM.style.display = "flex";
   }
