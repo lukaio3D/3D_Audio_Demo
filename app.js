@@ -1,8 +1,7 @@
 //Elemente aus dem DOM holen
-const introDOM = document.getElementById("introDOM");
-const sceneDOM = document.getElementById("overlay");
+
+//3D Elemente
 const scene = document.getElementById("scene");
-const startButton = document.getElementById("startButton");
 const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
 const Vorhang3 = document.getElementById("Vorhang3");
@@ -11,12 +10,18 @@ const soundBall = document.getElementById("soundBall");
 const ghost3D = document.getElementById("ghost3D");
 const ghostParent = document.getElementById("ghostParent");
 const pianoSound = document.getElementById("pianoSound");
+
+//DOM Elemente
+const introDOM = document.getElementById("introDOM");
+const sceneDOM = document.getElementById("overlay");
+const startButton = document.getElementById("startButton");
+const loadingNotice = document.getElementById("loadingNotice");
 const dialogBox = document.getElementById("dialogBox");
 const theBigDOM = document.getElementById("theBigDOM");
 const korrekteVersucheDOM = document.getElementById("korrekteVersucheDOM");
 const fehlVersucheDOM = document.getElementById("fehlVersucheDOM");
-const winnerDOM = document.getElementById("winnerDOM")
-const loserDOM = document.getElementById("loserDOM")
+const winnerDOM = document.getElementById("winnerDOM");
+const loserDOM = document.getElementById("loserDOM");
 
 //Variablen in Anwendung
 let vorhangMitSound;
@@ -26,6 +31,13 @@ const Vorhaenge = [Vorhang1, Vorhang2, Vorhang3, Vorhang4];
 const rotationsGhostParent = [
   -540, -450, -360, -270, -180, -90, 0, 90, 180, 270, 360, 450, 540,
 ];
+
+//Ladeprozess abwarten
+scene.addEventListener("play", () => {
+  loadingNotice.style.display = "none"
+  startButton.style.display = "block"
+  console.log("Scene has loaded")
+})
 
 // Intro
 startButton.onclick = () => {
@@ -62,32 +74,34 @@ function VorhangOeffnen(vorhangName) {
 const SchreibeDialog = (dialogtext) => (dialogBox.innerHTML = dialogtext);
 
 const KorrekterVersuch = () => {
-  checkGameState()
   korrektGeraten++;
+  checkGameState();
   korrekteVersucheDOM.innerHTML = "Richtig geraten: " + korrektGeraten;
   SchreibeDialog("Sie haben den Sound gefunden, Glückwunsch!");
 };
 
 const Fehlversuch = () => {
-  checkGameState()
   falschGeraten++;
+  checkGameState();
   fehlVersucheDOM.innerHTML = "Falsch geraten: " + falschGeraten;
-  SchreibeDialog("Das war leider falsch! Hören Sie genau hin und finden Sie den richtigen Vorhang");
+  SchreibeDialog(
+    "Das war leider falsch! Hören Sie genau hin und finden Sie den richtigen Vorhang"
+  );
 };
 
 const deaktiviereVorhaenge = () => {
-  Vorhang1.classList.remove("collidable")
-  Vorhang2.classList.remove("collidable")
-  Vorhang3.classList.remove("collidable")
-  Vorhang4.classList.remove("collidable")
-}
+  Vorhang1.classList.remove("collidable");
+  Vorhang2.classList.remove("collidable");
+  Vorhang3.classList.remove("collidable");
+  Vorhang4.classList.remove("collidable");
+};
 
 const aktiviereVorhaenge = () => {
-  Vorhang1.classList.add("collidable")
-  Vorhang2.classList.add("collidable")
-  Vorhang3.classList.add("collidable")
-  Vorhang4.classList.add("collidable")
-}
+  Vorhang1.classList.add("collidable");
+  Vorhang2.classList.add("collidable");
+  Vorhang3.classList.add("collidable");
+  Vorhang4.classList.add("collidable");
+};
 
 function VorhangHandler() {
   //Richtiger Vorhang gewählt
@@ -107,7 +121,7 @@ function VorhangHandler() {
     }, 11000);
     setTimeout(() => {
       hideGhost();
-    }, 15000)
+    }, 15000);
   }
   //falscher Vorhang gewählt
   else {
@@ -119,7 +133,6 @@ function VorhangHandler() {
       VorhangSchließen(this);
       aktiviereVorhaenge();
     }, 11000);
-
   }
 }
 
@@ -154,7 +167,7 @@ function hideGhost() {
       vorhangMitSound = none;
       console.log("Es wurde kein Vorhang als korrekt zugewiesen");
   }
-  SchreibeDialog("Der Geist versteckt sich, einen Moment Geduld!")
+  SchreibeDialog("Der Geist versteckt sich, einen Moment Geduld!");
   ghost3D.object3D.visible = false;
   ghost3D.setAttribute(
     "animation__position",
@@ -169,19 +182,21 @@ function hideGhost() {
   setTimeout(() => {
     ghost3D.object3D.visible = true;
     aktiviereVorhaenge();
-    SchreibeDialog("Klicke auf den Vorhang hinter dem sich der Geist verbirgt")
+    SchreibeDialog("Klicke auf den Vorhang hinter dem sich der Geist verbirgt");
   }, 7000);
 }
 
 const checkGameState = () => {
-  if(korrektGeraten >= 3){
-    winnerDOM.style.display = "flex"
-  }else if(falschGeraten >= 3){
-    loserDOM.style.display = "flex"
+  if (korrektGeraten >= 3) {
+    winnerDOM.style.display = "flex";
+  } else if (falschGeraten >= 3) {
+    loserDOM.style.display = "flex";
   }
-}
+};
 
-const reloadApp = () => {location.reload()}
+const reloadApp = () => {
+  location.reload();
+};
 
 //Events
 Vorhang1.onclick = VorhangHandler.bind(Vorhang1);

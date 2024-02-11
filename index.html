@@ -19,6 +19,7 @@
       xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
+      stats
     >
       <a-assets>
         <audio id="pianoSound" src="src\278903__syntheway__guardians-of-limbo-magnus-choir-vst-vst3-audio-unit-preset-by-syntheway.mp3" preload="auto" ></audio>
@@ -137,7 +138,10 @@
       <!-- introDOM -->
       <div id="introDOM" class="overlay fixed top-0 left-0 w-screen h-screen  bg-black flex flex-col gap-8 justify-center items-center z-40">
         <h1 class="text-gray-100 text-center text-5xl">3D Audio Experience</h1>
-        <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl">Start</button>
+        <div class = "h-16">
+          <p id="loadingNotice" class="text-gray-100">Die Anwendung lädt</p>
+          <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl hidden">Start</button>
+        </div>
       </div>
 
       <!-- sceneDOM -->
