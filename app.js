@@ -8,6 +8,9 @@ const Vorhang3 = document.getElementById("Vorhang3");
 const Vorhang4 = document.getElementById("Vorhang4");
 const soundBall = document.getElementById("soundBall");
 const ghost3D = document.getElementById("ghost3D");
+const robot3D = document.getElementById("robot3D")
+const grab3D = document.getElementById("grab3D")
+const dinosaur3D = document.getElementById("dinosaur3D")
 const ghostParent = document.getElementById("ghostParent");
 const pianoSound = document.getElementById("pianoSound");
 
@@ -33,10 +36,9 @@ const rotationsGhostParent = [
 ];
 
 //Ladeprozess abwarten
-scene.addEventListener("play", () => {
+scene.addEventListener("loaded", () => {
   loadingNotice.style.display = "none"
   startButton.style.display = "block"
-  console.log("Scene has loaded")
 })
 
 // Intro
@@ -125,6 +127,7 @@ function VorhangHandler() {
   }
   //falscher Vorhang gewählt
   else {
+    /* dinosaur3D.components.sound.playSound(); */
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
@@ -134,6 +137,18 @@ function VorhangHandler() {
       aktiviereVorhaenge();
     }, 11000);
   }
+}
+
+const hide3DModels = () => {
+  grab3D.object3D.visible = false;
+  dinosaur3D.object3D.visible = false;
+  robot3D.object3D.visible = false;
+}
+
+const show3DModels = () => {
+  grab3D.object3D.visible = true;
+  dinosaur3D.object3D.visible = true;
+  robot3D.object3D.visible = true;
 }
 
 function hideGhost() {
@@ -169,6 +184,7 @@ function hideGhost() {
   }
   SchreibeDialog("Der Geist versteckt sich, einen Moment Geduld!");
   ghost3D.object3D.visible = false;
+  hide3DModels();
   ghost3D.setAttribute(
     "animation__position",
     "property: position; to: 0 1 -4; easing: easeInOutQuad; dur: 7000"
@@ -181,6 +197,7 @@ function hideGhost() {
   );
   setTimeout(() => {
     ghost3D.object3D.visible = true;
+    show3DModels();
     aktiviereVorhaenge();
     SchreibeDialog("Klicke auf den Vorhang hinter dem sich der Geist verbirgt");
   }, 7000);

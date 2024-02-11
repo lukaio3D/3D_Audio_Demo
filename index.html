@@ -27,13 +27,26 @@
           src="src\278903__syntheway__guardians-of-limbo-magnus-choir-vst-vst3-audio-unit-preset-by-syntheway.mp3"
           preload="auto"
         ></audio>
-        <a-asset-item
-          id="ghostGLB"
-          src="src\fantasma_ghost_phantom.glb"
-        ></a-asset-item>
+        <audio
+        id="dinosaurSound"
+        src="src\89549__cgeffex__dinosaur_loud-roar.mp3"
+        preload="auto"
+      ></audio>
+      <audio
+      id="robotSound"
+      src="src\397253__screamstudio__robot.mp3"
+      preload="auto"
+    ></audio>
+        <a-asset-item id="ghostGLB" src="src\ghost_w_tophat.glb"></a-asset-item>
         <a-asset-item
           id="VorhangGLB"
           src="src\TheaterVorhang.glb"
+        ></a-asset-item>
+        <a-asset-item id="grabbyGLB" src="src\Grabby.glb"></a-asset-item>
+        <a-asset-item id="robotGLB" src="src\FlyingRobot.glb"></a-asset-item>
+        <a-asset-item
+          id="dinosaurGLB"
+          src="src\BitingDinosaur.glb"
         ></a-asset-item>
       </a-assets>
 
@@ -98,8 +111,6 @@
         cursor-listener
       ></a-gltf-model>
 
-      <!--         <a-gltf-model src="src\Deepmotion_Demo.glb"></a-gltf-model> -->
-
       <a-entity id="ghostParent">
         >
         <a-gltf-model
@@ -108,9 +119,39 @@
           visible="true"
           position="0 1 -1.5"
           rotation="0 0 0"
-          scale="0.5 0.5 0.5"
-          animation-mixer="clip:Armature|Action_Idle"
+          scale="0.3 0.3 0.3"
+          animation-mixer=""
           sound="src: #pianoSound; loop: true;"
+        ></a-gltf-model>
+        <a-gltf-model
+          id="robot3D"
+          src="#robotGLB"
+          position="-4 0.5 0"
+          rotation="0 270 0"
+          scale="0.8 0.8 0.8"
+          animation-mixer
+          visible="false"
+          sound="src: #robotSound; loop: false;"
+        ></a-gltf-model>
+        <a-gltf-model
+          id="dinosaur3D"
+          src="#dinosaurGLB"
+          position="0 0 6.5"
+          rotation="0 160 0"
+          scale="1.2 1.2 1.2"
+          animation-mixer
+          visible="false"
+          sound="src: #dinosaurSound; loop: false; volume: 6"
+        ></a-gltf-model>
+        <a-gltf-model
+          id="grab3D"
+          src="#grabbyGLB"
+          position="4.5 0 0"
+          rotation="0 90 0"
+          scale="0.7 0.7 0.7"
+          animation-mixer
+          visible="false"
+          sound="src: #pianoSound; loop: false;"
         ></a-gltf-model>
       </a-entity>
 
