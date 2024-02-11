@@ -47,6 +47,7 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   ambienceSound.play();
+  ghost3D.components.sound.playSound();
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -263,7 +264,6 @@ function hideGhost() {
   SchreibeDialog("Ich suche mein Versteck, höre genau hin!");
   ghost3D.object3D.visible = false;
   ghost3D.removeAttribute("animation-mixer");
-  ghost3D.components.sound.playSound();
   ghost3D.setAttribute(
     "animation__position",
     "property: position; to: 0 1 -4; easing: easeInOutQuad; dur: 7000"
