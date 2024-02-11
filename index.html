@@ -22,7 +22,11 @@
       stats
     >
       <a-assets>
-        <audio id="pianoSound" src="src\278903__syntheway__guardians-of-limbo-magnus-choir-vst-vst3-audio-unit-preset-by-syntheway.mp3" preload="auto" ></audio>
+        <audio
+          id="pianoSound"
+          src="src\278903__syntheway__guardians-of-limbo-magnus-choir-vst-vst3-audio-unit-preset-by-syntheway.mp3"
+          preload="auto"
+        ></audio>
         <a-asset-item
           id="ghostGLB"
           src="src\fantasma_ghost_phantom.glb"
@@ -42,7 +46,7 @@
         ></a-cursor>
       </a-camera>
 
-<!--       <a-entity
+      <!--       <a-entity
         id="mouseCursor"
         cursor="rayOrigin: mouse"
         raycaster="objects: .collidable"
@@ -96,21 +100,19 @@
 
       <!--         <a-gltf-model src="src\Deepmotion_Demo.glb"></a-gltf-model> -->
 
-      <a-entity 
-      id="ghostParent">
-      >
+      <a-entity id="ghostParent">
+        >
         <a-gltf-model
-        id="ghost3D"
-        gltf-model="#ghostGLB"
-        visible="true"
-        position="0 1 -1.5"
-        rotation="0 0 0"
-        scale="0.5 0.5 0.5"
-        animation-mixer="clip:Armature|Action_Idle"
-        sound="src: #pianoSound; loop: true;"
-      ></a-gltf-model>
+          id="ghost3D"
+          gltf-model="#ghostGLB"
+          visible="true"
+          position="0 1 -1.5"
+          rotation="0 0 0"
+          scale="0.5 0.5 0.5"
+          animation-mixer="clip:Armature|Action_Idle"
+          sound="src: #pianoSound; loop: true;"
+        ></a-gltf-model>
       </a-entity>
-
 
       <!--       <a-entity
         id="soundBall"
@@ -120,7 +122,7 @@
         animation
       ></a-entity> -->
 
-<!--       <a-video position="0 1 -4" scale="2 3 2"></a-video>
+      <!--       <a-video position="0 1 -4" scale="2 3 2"></a-video>
       <a-image
         position="0 1 4"
         rotation="0 180 0"
@@ -135,36 +137,68 @@
       ></a-image> -->
     </a-scene>
 
-      <!-- introDOM -->
-      <div id="introDOM" class="overlay fixed top-0 left-0 w-screen h-screen  bg-black flex flex-col gap-8 justify-center items-center z-40">
-        <h1 class="text-gray-100 text-center text-5xl">3D Audio Experience</h1>
-        <div class = "h-16">
-          <p id="loadingNotice" class="text-gray-100">Die Anwendung lädt</p>
-          <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl hidden">Start</button>
-        </div>
+    <!-- introDOM -->
+    <div
+      id="introDOM"
+      class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex flex-col gap-8 justify-center items-center z-40"
+    >
+      <h1 class="text-gray-100 text-center text-5xl">3D Audio Experience</h1>
+      <div class="h-16">
+        <p id="loadingNotice" class="text-gray-100">Die Anwendung lädt</p>
+        <button
+          id="startButton"
+          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl hidden"
+        >
+          Start
+        </button>
       </div>
+    </div>
 
-      <!-- sceneDOM -->
-      <div id="overlay" class="flex flex-col justify-between items-center h-full text-gray-100">
-        <div>
-          <p id="korrekteVersucheDOM">Richtig geraten: 0</p>
-          <p id="fehlVersucheDOM">Falsch geraten: 0</p>
-        </div>
-        <h1 id="dialogBox" class="px-2 pb-16  text-center">Hallo Hallo</h1>
+    <!-- sceneDOM -->
+    <div
+      id="overlay"
+      class="flex flex-col justify-between items-center h-full text-gray-100"
+    >
+      <div>
+        <p id="korrekteVersucheDOM">Richtig geraten: 0</p>
+        <p id="fehlVersucheDOM">Falsch geraten: 0</p>
       </div>
+      <h1 id="dialogBox" class="px-2 pb-16 text-center">Hallo Hallo</h1>
 
       <!-- WinnerDOM -->
-      <div id="winnerDOM" class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden">
-        <h1 class="text-gray-100 text-center text-5xl">Du hast gewonnen, Glückwunsch!</h1>
-        <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl" onclick="reloadApp()">Neustart</button>
+      <div
+        id="winnerDOM"
+        class="fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden"
+      >
+        <h1 class="text-gray-100 text-center text-5xl">
+          Du hast gewonnen, Glückwunsch!
+        </h1>
+        <button
+          id="startButton"
+          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl"
+          onclick="reloadApp()"
+        >
+          Neustart
+        </button>
       </div>
 
       <!-- LoserDOM -->
-      <div id="loserDOM" class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden">
-        <h1 class="text-gray-100 text-center text-5xl">Du hast verloren, wie Schade!</h1>
-        <button id="startButton" class="bg-gray-100 p-2 px-5 rounded-xl text-2xl" onclick="reloadApp()">Neustart</button>
+      <div
+        id="loserDOM"
+        class="fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden"
+      >
+        <h1 class="text-gray-100 text-center text-5xl">
+          Du hast verloren, wie Schade!
+        </h1>
+        <button
+          id="startButton"
+          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl"
+          onclick="reloadApp()"
+        >
+          Neustart
+        </button>
       </div>
-
+    </div>
   </body>
   <script src="app.js"></script>
 </html>
