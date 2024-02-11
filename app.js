@@ -1,7 +1,7 @@
 //Elemente aus dem DOM holen
 
 //3D Elemente
-/* const ambienceSound = document.getElementById("ambienceSound"); */
+const ambienceSound = document.getElementById("ambienceSound");
 const scene = document.getElementById("scene");
 const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
@@ -38,7 +38,7 @@ const rotationsGhostParent = [
 ];
 
 //Ladeprozess abwarten
-scene.addEventListener("renderstart", () => {
+scene.addEventListener("loaded", () => {
   loadingNotice.style.display = "none";
   startButton.style.display = "block";
 });
@@ -46,6 +46,7 @@ scene.addEventListener("renderstart", () => {
 // Intro
 startButton.onclick = () => {
   introDOM.remove();
+  ambienceSound.play()
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -62,8 +63,7 @@ startButton.onclick = () => {
   }, 13000);
   setTimeout(() => {
     hideGhost();
-  }, 19500);
-  ghost3D.components.sound.playSound();
+  }, 19500);  
 }; 
 
 sceneDOM.style.visibility = "none";
