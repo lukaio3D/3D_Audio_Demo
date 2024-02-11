@@ -51,7 +51,6 @@ startButton.onclick = () => {
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
   );
-  ghost3D.components.sound.pauseSound();
   setTimeout(() => {
     SchreibeDialog(
       "Du kannst mich hören wenn ich mich im Raum bewege und hinter dem Vorhang verstecke."
