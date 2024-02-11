@@ -45,7 +45,6 @@ scene.addEventListener("renderstart", () => {
 
 // Intro
 startButton.onclick = () => {
-  ghost3D.components.sound.playSound();
   introDOM.remove();
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
@@ -64,6 +63,7 @@ startButton.onclick = () => {
   setTimeout(() => {
     hideGhost();
   }, 19500);
+  ghost3D.components.sound.playSound();
 }; 
 
 sceneDOM.style.visibility = "none";
