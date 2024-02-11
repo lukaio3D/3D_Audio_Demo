@@ -1,6 +1,7 @@
 //Elemente aus dem DOM holen
 
 //3D Elemente
+const ambienceSound = document.getElementById("ambienceSound");
 const scene = document.getElementById("scene");
 const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
@@ -48,14 +49,25 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   sceneDOM.style.visibility = "flex";
-  ghost3D.components.sound.playSound();
+  ambienceSound.volume = 0.3
+  ambienceSound.play();
   SchreibeDialog(
-    "Hallo Besucher, <br> hinter einem der Vorhänge ist ein Sound versteckt. Können Sie ihn finden?"
+    "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
   );
   setTimeout(() => {
+    SchreibeDialog(
+      "Du kannst mich hören wenn ich mich im Raum bewege und hinter dem Vorhang verstecke."
+    );
+  }, 6500);
+  setTimeout(() => {
+    SchreibeDialog(
+      "Rate dreimal mein Versteck richtig und du hast gewonnen. </br> Wenn du dreimal falsch rätst, hast du verloren."
+    );
+  }, 13000);
+  setTimeout(() => {
     hideGhost();
-  }, 3000);
-};
+  }, 19500);
+}; 
 
 sceneDOM.style.visibility = "none";
 
@@ -80,17 +92,15 @@ const SchreibeDialog = (dialogtext) => (dialogBox.innerHTML = dialogtext);
 
 const KorrekterVersuch = () => {
   korrektGeraten++;
-  checkGameState();
   korrekteVersucheDOM.innerHTML = "Richtig geraten: " + korrektGeraten;
-  SchreibeDialog("Sie haben den Sound gefunden, Glückwunsch!");
+  SchreibeDialog("Du hast mich gefunden. Klasse gemacht!");
 };
 
 const Fehlversuch = () => {
   falschGeraten++;
-  checkGameState();
   fehlVersucheDOM.innerHTML = "Falsch geraten: " + falschGeraten;
   SchreibeDialog(
-    "Das war leider falsch! Hören Sie genau hin und finden Sie den richtigen Vorhang"
+    "Du hast den falschen Vorhang erwischt. Höre noch mal genauer hin!"
   );
 };
 
@@ -109,9 +119,10 @@ const aktiviereVorhaenge = () => {
 };
 
 function VorhangHandler() {
-  //Richtiger Vorhang gewählt
+  //Vorhang mit Geist gewählt
   if (this.id === vorhangMitSound) {
     ghost3D.object3D.visible = true;
+    ghost3D.setAttribute("animation-mixer", "")
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
@@ -120,59 +131,81 @@ function VorhangHandler() {
         "animation__position",
         "property: position; to: 0 1 -1.5; easing: easeInOutQuad; dur: 5000;"
       );
+      ghost3D.components.sound.stopSound();
     }, 5000);
     setTimeout(() => {
       VorhangSchließen(this);
       KorrekterVersuch();
+      checkGameState();
     }, 11000);
     setTimeout(() => {
       hideGhost();
     }, 15000);
-  } else if (this.id === vorhangMitDino) {
+  } 
+  //Vorhang mit Dino gewählt
+  else if (this.id === vorhangMitDino) {
+    dinosaur3D.setAttribute("animation-mixer", "")
     dinosaur3D.object3D.visible = true;
-    dinosaur3D.components.sound.playSound();
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
     setTimeout(() => {
       Fehlversuch();
+      dinosaur3D.components.sound.playSound();
+    }, 3000)
+    setTimeout(() => {
+      dinosaur3D.components.sound.playSound();
       VorhangSchließen(this);
       aktiviereVorhaenge();
+      checkGameState();
     }, 11000);
     setTimeout(() => {
       dinosaur3D.object3D.visible = false;
+      dinosaur3D.removeAttribute("animation-mixer")
     }, 20000);
   } 
+  //Vorhang mit Krabbe gewählt
   else if (this.id === vorhangMitKrabbe) {
+    krabbe3D.setAttribute("animation-mixer","")
     krabbe3D.object3D.visible = true;
-    krabbe3D.components.sound.playSound();
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
     setTimeout(() => {
       Fehlversuch();
+      krabbe3D.components.sound.playSound();
+    }, 3000)
+    setTimeout(() => {
       VorhangSchließen(this);
       aktiviereVorhaenge();
+      checkGameState();
     }, 11000);
     setTimeout(() => {
       krabbe3D.object3D.visible = false;
+      krabbe3D.removeAttribute("animation-mixer")
     }, 20000);
   } 
+  //Vorhang mit Roboter gewählt
   else if (this.id === vorhangMitRoboter) {
+    robot3D.setAttribute("animation-mixer","")
     robot3D.object3D.visible = true;
-    robot3D.components.sound.playSound();
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
     setTimeout(() => {
       Fehlversuch();
+      robot3D.components.sound.playSound();
+    }, 3000)
+    setTimeout(() => {
       VorhangSchließen(this);
       aktiviereVorhaenge();
+      checkGameState();
     }, 11000);
     setTimeout(() => {
       robot3D.object3D.visible = false;
+      robot3D.removeAttribute("animation-mixer")
     }, 20000);
-  } 
+  }
   //falscher Vorhang gewählt
   else {
     /* dinosaur3D.components.sound.playSound(); */
@@ -183,10 +216,10 @@ function VorhangHandler() {
       Fehlversuch();
       VorhangSchließen(this);
       aktiviereVorhaenge();
+      checkGameState();
     }, 11000);
   }
 }
-
 
 function hideGhost() {
   let randomRotation =
@@ -231,8 +264,10 @@ function hideGhost() {
       vorhangMitSound = none;
       console.log("Es wurde kein Vorhang als korrekt zugewiesen");
   }
-  SchreibeDialog("Der Geist versteckt sich, einen Moment Geduld!");
+  SchreibeDialog("Ich suche mein Versteck, höre genau hin!");
   ghost3D.object3D.visible = false;
+  ghost3D.removeAttribute("animation-mixer")
+  ghost3D.components.sound.playSound();
   ghost3D.setAttribute(
     "animation__position",
     "property: position; to: 0 1 -4; easing: easeInOutQuad; dur: 7000"
@@ -245,14 +280,18 @@ function hideGhost() {
   );
   setTimeout(() => {
     aktiviereVorhaenge();
-    SchreibeDialog("Klicke auf den Vorhang hinter dem sich der Geist verbirgt");
+    SchreibeDialog("Bin versteckt. Mach dich auf die Suche!");
   }, 7000);
 }
 
 const checkGameState = () => {
   if (korrektGeraten >= 3) {
+    ambienceSound.pause()
+    ghost3D.components.sound.stopSound()
     winnerDOM.style.display = "flex";
   } else if (falschGeraten >= 3) {
+    ambienceSound.pause()
+    ghost3D.components.sound.stopSound()
     loserDOM.style.display = "flex";
   }
 };

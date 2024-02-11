@@ -19,24 +19,35 @@
       xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
-      stats
+      xstats
     >
       <a-assets>
         <audio
-          id="pianoSound"
-          src="src\278903__syntheway__guardians-of-limbo-magnus-choir-vst-vst3-audio-unit-preset-by-syntheway.mp3"
+          id="ambienceSound"
+          src="src\133100__klankbeeld__horror-ambience-10.mp3"
+          preload="auto"
+          loop
+        ></audio>
+        <audio
+          id="ghostSound"
+          src="src\175944__litruv__ghost-whispers.mp3"
           preload="auto"
         ></audio>
         <audio
-        id="dinosaurSound"
-        src="src\89549__cgeffex__dinosaur_loud-roar.mp3"
+          id="dinosaurSound"
+          src="src\89549__cgeffex__dinosaur_loud-roar.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+          id="robotSound"
+          src="src\397253__screamstudio__robot.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+        id="krabbenSound"
+        src="src\126113__klankbeeld__laugh.mp3"
         preload="auto"
       ></audio>
-      <audio
-      id="robotSound"
-      src="src\397253__screamstudio__robot.mp3"
-      preload="auto"
-    ></audio>
         <a-asset-item id="ghostGLB" src="src\ghost_w_tophat.glb"></a-asset-item>
         <a-asset-item
           id="VorhangGLB"
@@ -120,8 +131,8 @@
           position="0 1 -1.5"
           rotation="0 0 0"
           scale="0.3 0.3 0.3"
-          animation-mixer=""
-          sound="src: #pianoSound; loop: true;"
+          sound="src: #ghostSound; loop: true;"
+          animation-mixer
         ></a-gltf-model>
         <a-gltf-model
           id="robot3D"
@@ -129,9 +140,8 @@
           position="-4 0.5 0"
           rotation="0 270 0"
           scale="0.8 0.8 0.8"
-          animation-mixer
           visible="false"
-          sound="src: #robotSound; loop: false;"
+          sound="src: #robotSound; loop: false; volume: 2"
         ></a-gltf-model>
         <a-gltf-model
           id="dinosaur3D"
@@ -139,7 +149,6 @@
           position="0 0 6.5"
           rotation="0 160 0"
           scale="1.2 1.2 1.2"
-          animation-mixer
           visible="false"
           sound="src: #dinosaurSound; loop: false; volume: 6"
         ></a-gltf-model>
@@ -149,9 +158,8 @@
           position="4.5 0 0"
           rotation="0 90 0"
           scale="0.7 0.7 0.7"
-          animation-mixer
           visible="false"
-          sound="src: #pianoSound; loop: false;"
+          sound="src: #krabbenSound; loop: false; volume: 5"
         ></a-gltf-model>
       </a-entity>
 
@@ -216,7 +224,7 @@
         </h1>
         <button
           id="startButton"
-          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl"
+          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl text-black"
           onclick="reloadApp()"
         >
           Neustart
@@ -229,11 +237,11 @@
         class="fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden"
       >
         <h1 class="text-gray-100 text-center text-5xl">
-          Du hast verloren, wie Schade!
+          Du hast verloren. Probier es noch mal!
         </h1>
         <button
           id="startButton"
-          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl"
+          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl text-black"
           onclick="reloadApp()"
         >
           Neustart
