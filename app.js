@@ -1,19 +1,17 @@
 //Elemente aus dem DOM holen
 
 //3D Elemente
-const ambienceSound = document.getElementById("ambienceSound");
+/* const ambienceSound = document.getElementById("ambienceSound"); */
 const scene = document.getElementById("scene");
 const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
 const Vorhang3 = document.getElementById("Vorhang3");
 const Vorhang4 = document.getElementById("Vorhang4");
-const soundBall = document.getElementById("soundBall");
 const ghost3D = document.getElementById("ghost3D");
 const robot3D = document.getElementById("robot3D");
 const krabbe3D = document.getElementById("grab3D");
 const dinosaur3D = document.getElementById("dinosaur3D");
 const ghostParent = document.getElementById("ghostParent");
-const pianoSound = document.getElementById("pianoSound");
 
 //DOM Elemente
 const introDOM = document.getElementById("introDOM");
@@ -40,18 +38,20 @@ const rotationsGhostParent = [
 ];
 
 //Ladeprozess abwarten
-scene.addEventListener("loaded", () => {
+scene.addEventListener("renderstart", () => {
   loadingNotice.style.display = "none";
   startButton.style.display = "block";
 });
 
 // Intro
 startButton.onclick = () => {
+  ghost3D.components.sound.playSound();
   introDOM.remove();
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
   );
+  ghost3D.components.sound.pauseSound();
   setTimeout(() => {
     SchreibeDialog(
       "Du kannst mich hören wenn ich mich im Raum bewege und hinter dem Vorhang verstecke."
@@ -129,7 +129,7 @@ function VorhangHandler() {
         "animation__position",
         "property: position; to: 0 1 -1.5; easing: easeInOutQuad; dur: 5000;"
       );
-      ghost3D.components.sound.stopSound();
+      ghost3D.components.sound.pauseSound();
     }, 5000);
     setTimeout(() => {
       VorhangSchließen(this);
@@ -206,7 +206,6 @@ function VorhangHandler() {
   }
   //falscher Vorhang gewählt
   else {
-    /* dinosaur3D.components.sound.playSound(); */
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
@@ -284,10 +283,10 @@ function hideGhost() {
 
 const checkGameState = () => {
   if (korrektGeraten >= 3) {
-    ghost3D.components.sound.stopSound()
+    ghost3D.components.sound.pauseSound()
     winnerDOM.style.display = "flex";
   } else if (falschGeraten >= 3) {
-    ghost3D.components.sound.stopSound()
+    ghost3D.components.sound.pauseSound()
     loserDOM.style.display = "flex";
   }
 };
