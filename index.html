@@ -19,7 +19,7 @@
       xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
-      xstats
+      stats
     >
       <a-assets>
         <audio
@@ -66,7 +66,7 @@
           cursor="fuse: false"
           geometry="primitive: ring; radiusInner: 0; radiusOuter: 0.005"
           material="color: white; shader: flat; opacity: 0.2"
-          raycaster="objects: .collidable; interval: 100"
+          raycaster="objects: .collidable; interval: 500"
         ></a-cursor>
       </a-camera>
 
