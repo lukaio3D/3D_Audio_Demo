@@ -7,13 +7,11 @@ const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
 const Vorhang3 = document.getElementById("Vorhang3");
 const Vorhang4 = document.getElementById("Vorhang4");
-const soundBall = document.getElementById("soundBall");
 const ghost3D = document.getElementById("ghost3D");
 const robot3D = document.getElementById("robot3D");
 const krabbe3D = document.getElementById("grab3D");
 const dinosaur3D = document.getElementById("dinosaur3D");
 const ghostParent = document.getElementById("ghostParent");
-const pianoSound = document.getElementById("pianoSound");
 
 //DOM Elemente
 const introDOM = document.getElementById("introDOM");
@@ -48,6 +46,8 @@ scene.addEventListener("loaded", () => {
 // Intro
 startButton.onclick = () => {
   introDOM.remove();
+  ambienceSound.play();
+  ghost3D.components.sound.playSound();
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -64,8 +64,9 @@ startButton.onclick = () => {
   }, 13000);
   setTimeout(() => {
     hideGhost();
+    ambienceSound.pause();
   }, 19500);
-}; 
+};
 
 sceneDOM.style.visibility = "none";
 
@@ -120,7 +121,7 @@ function VorhangHandler() {
   //Vorhang mit Geist gewählt
   if (this.id === vorhangMitSound) {
     ghost3D.object3D.visible = true;
-    ghost3D.setAttribute("animation-mixer", "")
+    ghost3D.setAttribute("animation-mixer", "");
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
@@ -129,7 +130,6 @@ function VorhangHandler() {
         "animation__position",
         "property: position; to: 0 1 -1.5; easing: easeInOutQuad; dur: 5000;"
       );
-      ghost3D.components.sound.stopSound();
     }, 5000);
     setTimeout(() => {
       VorhangSchließen(this);
@@ -139,10 +139,10 @@ function VorhangHandler() {
     setTimeout(() => {
       hideGhost();
     }, 15000);
-  } 
+  }
   //Vorhang mit Dino gewählt
   else if (this.id === vorhangMitDino) {
-    dinosaur3D.setAttribute("animation-mixer", "")
+    dinosaur3D.setAttribute("animation-mixer", "");
     dinosaur3D.object3D.visible = true;
     deaktiviereVorhaenge();
     SchreibeDialog("");
@@ -150,7 +150,7 @@ function VorhangHandler() {
     setTimeout(() => {
       Fehlversuch();
       dinosaur3D.components.sound.playSound();
-    }, 3000)
+    }, 3000);
     setTimeout(() => {
       dinosaur3D.components.sound.playSound();
       VorhangSchließen(this);
@@ -159,12 +159,12 @@ function VorhangHandler() {
     }, 11000);
     setTimeout(() => {
       dinosaur3D.object3D.visible = false;
-      dinosaur3D.removeAttribute("animation-mixer")
+      dinosaur3D.removeAttribute("animation-mixer");
     }, 20000);
-  } 
+  }
   //Vorhang mit Krabbe gewählt
   else if (this.id === vorhangMitKrabbe) {
-    krabbe3D.setAttribute("animation-mixer","")
+    krabbe3D.setAttribute("animation-mixer", "");
     krabbe3D.object3D.visible = true;
     deaktiviereVorhaenge();
     SchreibeDialog("");
@@ -172,7 +172,7 @@ function VorhangHandler() {
     setTimeout(() => {
       Fehlversuch();
       krabbe3D.components.sound.playSound();
-    }, 3000)
+    }, 3000);
     setTimeout(() => {
       VorhangSchließen(this);
       aktiviereVorhaenge();
@@ -180,12 +180,12 @@ function VorhangHandler() {
     }, 11000);
     setTimeout(() => {
       krabbe3D.object3D.visible = false;
-      krabbe3D.removeAttribute("animation-mixer")
+      krabbe3D.removeAttribute("animation-mixer");
     }, 20000);
-  } 
+  }
   //Vorhang mit Roboter gewählt
   else if (this.id === vorhangMitRoboter) {
-    robot3D.setAttribute("animation-mixer","")
+    robot3D.setAttribute("animation-mixer", "");
     robot3D.object3D.visible = true;
     deaktiviereVorhaenge();
     SchreibeDialog("");
@@ -193,7 +193,7 @@ function VorhangHandler() {
     setTimeout(() => {
       Fehlversuch();
       robot3D.components.sound.playSound();
-    }, 3000)
+    }, 3000);
     setTimeout(() => {
       VorhangSchließen(this);
       aktiviereVorhaenge();
@@ -201,12 +201,11 @@ function VorhangHandler() {
     }, 11000);
     setTimeout(() => {
       robot3D.object3D.visible = false;
-      robot3D.removeAttribute("animation-mixer")
+      robot3D.removeAttribute("animation-mixer");
     }, 20000);
   }
   //falscher Vorhang gewählt
   else {
-    /* dinosaur3D.components.sound.playSound(); */
     deaktiviereVorhaenge();
     SchreibeDialog("");
     VorhangOeffnen(this);
@@ -264,8 +263,7 @@ function hideGhost() {
   }
   SchreibeDialog("Ich suche mein Versteck, höre genau hin!");
   ghost3D.object3D.visible = false;
-  ghost3D.removeAttribute("animation-mixer")
-  ghost3D.components.sound.playSound();
+  ghost3D.removeAttribute("animation-mixer");
   ghost3D.setAttribute(
     "animation__position",
     "property: position; to: 0 1 -4; easing: easeInOutQuad; dur: 7000"
@@ -284,10 +282,8 @@ function hideGhost() {
 
 const checkGameState = () => {
   if (korrektGeraten >= 3) {
-    ghost3D.components.sound.stopSound()
     winnerDOM.style.display = "flex";
   } else if (falschGeraten >= 3) {
-    ghost3D.components.sound.stopSound()
     loserDOM.style.display = "flex";
   }
 };
