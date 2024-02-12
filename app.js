@@ -7,6 +7,10 @@ const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
 const Vorhang3 = document.getElementById("Vorhang3");
 const Vorhang4 = document.getElementById("Vorhang4");
+const vorhang1ClickCollider = document.getElementById("vorhang1ClickCollider");
+const vorhang2ClickCollider = document.getElementById("vorhang2ClickCollider");
+const vorhang3ClickCollider = document.getElementById("vorhang3ClickCollider");
+const vorhang4ClickCollider = document.getElementById("vorhang4ClickCollider");
 const ghost3D = document.getElementById("ghost3D");
 const robot3D = document.getElementById("robot3D");
 const krabbe3D = document.getElementById("grab3D");
@@ -104,17 +108,17 @@ const Fehlversuch = () => {
 };
 
 const deaktiviereVorhaenge = () => {
-  Vorhang1.classList.remove("collidable");
-  Vorhang2.classList.remove("collidable");
-  Vorhang3.classList.remove("collidable");
-  Vorhang4.classList.remove("collidable");
+  vorhang1ClickCollider.classList.remove("collidable");
+  vorhang2ClickCollider.classList.remove("collidable");
+  vorhang3ClickCollider.classList.remove("collidable");
+  vorhang4ClickCollider.classList.remove("collidable");
 };
 
 const aktiviereVorhaenge = () => {
-  Vorhang1.classList.add("collidable");
-  Vorhang2.classList.add("collidable");
-  Vorhang3.classList.add("collidable");
-  Vorhang4.classList.add("collidable");
+  vorhang1ClickCollider.classList.add("collidable");
+  vorhang2ClickCollider.classList.add("collidable");
+  vorhang3ClickCollider.classList.add("collidable");
+  vorhang4ClickCollider.classList.add("collidable");
 };
 
 function VorhangHandler() {
@@ -293,7 +297,7 @@ const reloadApp = () => {
 };
 
 //Events
-Vorhang1.onclick = VorhangHandler.bind(Vorhang1);
-Vorhang2.onclick = VorhangHandler.bind(Vorhang2);
-Vorhang3.onclick = VorhangHandler.bind(Vorhang3);
-Vorhang4.onclick = VorhangHandler.bind(Vorhang4);
+vorhang1ClickCollider.onclick = VorhangHandler.bind(Vorhang1);
+vorhang2ClickCollider.onclick = VorhangHandler.bind(Vorhang2);
+vorhang3ClickCollider.onclick = VorhangHandler.bind(Vorhang3);
+vorhang4ClickCollider.onclick = VorhangHandler.bind(Vorhang4);
