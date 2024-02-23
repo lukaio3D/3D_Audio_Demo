@@ -55,7 +55,7 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   ambienceSound.play();
-  scene.setAttribute("xr-mode-ui", "XRMode: ar")
+  scene.setAttribute("xr-mode-ui", "XRMode: ar; enterAREnabled: true")
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
