@@ -16,7 +16,6 @@
     <a-scene
       id="scene"
       class=""
-      xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
       xstats
@@ -235,17 +234,91 @@
     <!-- introDOM -->
     <div
       id="introDOM"
-      class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex flex-col gap-8 justify-center items-center z-40"
+      class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex flex-col gap-32 justify-center items-center z-40"
     >
-      <h1 class="text-gray-100 text-center text-5xl">3D Audio Demo</h1>
-      <div class="h-16">
+      <!--     zentraler EyeCatcher Startseite -->
+      <div class="flex flex-col justify-center items-center gap-8">
+        <img
+          class="content-fit h-1/2"
+          src="src\img\Ghost_Rendering.png"
+          alt=""
+        />
+        <h1 class="text-gray-100 text-center text-3xl lg:text-5xl">
+          3D Audio Demo
+        </h1>
         <p id="loadingNotice" class="text-gray-100">Die Anwendung lädt</p>
         <button
           id="startButton"
-          class="bg-gray-100 p-2 px-5 rounded-xl text-2xl hidden"
+          class="bg-gray-900 p-2 px-5 rounded-xl text-xl lg:text-2xl text-gray-100 hidden"
         >
           Start
         </button>
+      </div>
+
+      <!-- Credits über Button einblendbar -->
+      <button
+        id="creditsButton"
+        class="fixed top-4 left-4 p-2 px-5 rounded-xl lg:text-2xl text-gray-100"
+        onclick=toggleCredits()
+        >Credits</button>
+      <div
+        id="creditDOM"
+        class="fixed left-4 top-16 max-w-[92vw] lg:w-1/3 flex flex-col p-4 gap-2 bg-white rounded-xl text-gray-900 overflow-auto hidden"
+      >
+        <div class="grid grid-cols-2">
+          <h2 class="font-semibold">Umsetzung</h2>
+          <h2 class="font-semibold">Idee</h2>
+          <img class="w-48" src="src\img\230731_Logo_lukaio.png" alt="" />
+          <img class="w-48" src="src\img\Logo_THINKpott_final.png" />
+          <h2 class="font-semibold">Assets</h2>
+        </div>
+        <div class="grid grid-cols-5 gap-2 text-xs text-align-start">
+          <p class="font-semibold">3D Geist</p>
+          <p class="col-span-4">
+            "Ghost w/ Tophat" (https://skfb.ly/ow7EG) by Noby Grand is licensed
+            under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+          <p class="font-semibold">3D Dinosaurier</p>
+          <p class="col-span-4">
+            "dinosaur_animation" (https://skfb.ly/oIRZt) by raythananselmdass is
+            licensed under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+          <p class="font-semibold">3D Roboter</p>
+          <p class="col-span-4">
+            "Mech Drone" (https://skfb.ly/LMro) by Willy Decarpentrie is
+            licensed under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+          <p class="font-semibold">3D Krabbe</p>
+          <p class="col-span-4">
+            "Dancing Crab - Uca Mjoebergi" (https://skfb.ly/6pzuo) by Bohdan
+            Lvov is licensed under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+          <p class="font-semibold">Musik Hintergrund</p>
+          <p class="col-span-4">
+            "Horror ambience 10" (https://freesound.org/people/klankbeeld/sounds/133100/?) by klankbeeld is licensed under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+          <p class="font-semibold">Sound Dinosaurier</p>
+          <p class="col-span-4">
+            "Dinosaur_Loud Roar" (https://freesound.org/people/CGEffex/sounds/89549/?) by CGEffex is licensed under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+          <p class="font-semibold">Sound Lachen</p>
+          <p class="col-span-4">
+            "laugh" (https://freesound.org/people/klankbeeld/sounds/126113/) by CGEffex is licensed under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+          <p class="font-semibold">Sound Richtig geraten</p>
+          <p class="col-span-4">
+            "Jingle_Achievement_00" (https://freesound.org/people/LittleRobotSoundFactory/sounds/270404/) by LittleRobotSoundFactory is licensed under Creative Commons Attribution
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+        </div>
+        
       </div>
     </div>
 
@@ -258,8 +331,9 @@
         <p id="korrekteVersucheDOM">Richtig geraten: 0</p>
         <p id="fehlVersucheDOM">Falsch geraten: 0</p>
       </div>
-      <h1 id="dialogBox" class="px-2 pb-16 text-center">Hallo Hallo</h1>
-
+      <div class="p-2 px-4 bg-black bg-opacity-20 rounded-xl mb-16">
+        <h1 id="dialogBox" class="text-center">Hallo Hallo</h1>
+      </div>
       <!-- WinnerDOM -->
       <div
         id="winnerDOM"

@@ -20,6 +20,7 @@ const ghostParent = document.getElementById("ghostParent");
 
 //DOM Elemente
 const introDOM = document.getElementById("introDOM");
+const creditDOM = document.getElementById("creditDOM");
 const sceneDOM = document.getElementById("overlay");
 const startButton = document.getElementById("startButton");
 const loadingNotice = document.getElementById("loadingNotice");
@@ -54,6 +55,7 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   ambienceSound.play();
+  scene.setAttribute("xr-mode-ui", "XRMode: ar")
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -76,6 +78,13 @@ startButton.onclick = () => {
 sceneDOM.style.visibility = "none";
 
 //Funktionen
+const toggleCredits = () => {
+  if (!creditDOM.style.display) creditDOM.style.display = "flex";
+  else {
+    creditDOM.style.display = null;
+  }
+};
+
 const playGhostSound = () => {
   ghost3D.setAttribute(
     "sound",
