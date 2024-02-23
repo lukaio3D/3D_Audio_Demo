@@ -16,7 +16,7 @@
     <a-scene
       id="scene"
       class=""
-      xr-mode-ui="XRMode: ar; enterAREnabled: false"
+      xr-mode-ui="XRMode: ar; enabled: false"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
       xstats
@@ -264,7 +264,7 @@
         >Credits</button>
       <div
         id="creditDOM"
-        class="fixed left-4 top-16 max-w-[92vw] lg:w-1/3 flex flex-col p-4 gap-2 bg-white rounded-xl text-gray-900 overflow-auto hidden"
+        class="fixed left-4 top-16 max-w-[92vw] max-h-[85vh] lg:w-1/3 flex flex-col p-4 gap-2 bg-white rounded-xl text-gray-900 overflow-auto hidden"
       >
         <div class="grid grid-cols-2">
           <h2 class="font-semibold">Umsetzung</h2>
