@@ -217,11 +217,13 @@
     >
       <!--     zentraler EyeCatcher Startseite -->
       <div class="flex flex-col justify-center items-center gap-8">
-        <img
-          class="content-fit h-1/2"
+        <div class="">
+          <img
+          class="object-contain"
           src="src\img\Ghost_Rendering.png"
           alt=""
         />
+        </div>
         <h1 class="text-gray-100 text-center text-3xl lg:text-5xl">
           3D Audio Demo
         </h1>
@@ -232,14 +234,6 @@
         >
           Start
         </button>
-      </div>
-
-      <!--      Credits in Fußzeile -->
-      <div
-        class="fixed left-4 bottom-4 flex gap-4 lg:gap-12 text-gray-400 text-xs"
-      >
-        <p>created by lukaio - lukas.schaab@lukaio.de</p>
-        <p>idea by Thinkpott - info@thinkpott.com</p>
       </div>
 
       <!-- Credits über Button einblendbar -->
@@ -371,9 +365,10 @@
       <!-- WinnerDOM -->
       <div
         id="winnerDOM"
-        class="fixed top-0 left-0 w-screen h-screen bg-black hidden flex-col gap-8 justify-center items-center z-50 "
-      >
-        <img class="" src="src\img\trophy.png" alt="">
+        class="fixed top-0 left-0 w-screen h-screen bg-black hidden flex-col gap-8 justify-center items-center z-50"
+      ><div>
+        <img class="object-contain" src="src\img\trophy.png" alt="" />
+      </div>
         <h1 class="text-gray-100 text-center text-5xl">
           Du hast gewonnen, Glückwunsch!
         </h1>
@@ -384,6 +379,13 @@
         >
           Neustart
         </button>
+        <!--      Credits in Fußzeile -->
+        <div
+          class="fixed left-4 bottom-4 flex gap-4 lg:gap-12 text-gray-400 text-xs"
+        >
+          <p>created by lukaio - lukas.schaab@lukaio.de</p>
+          <p>idea by Thinkpott - info@thinkpott.com</p>
+        </div>
       </div>
 
       <!-- LoserDOM -->
@@ -391,7 +393,9 @@
         id="loserDOM"
         class="fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden"
       >
-        <img class="" src="src\img\red-cross.png" alt="">
+      <div>
+        <img class="object-contain" src="src\img\red-cross.png" alt="" />
+      </div>
         <h1 class="text-gray-100 text-center text-5xl">
           Du hast verloren. Probiere es noch mal!
         </h1>
@@ -402,6 +406,13 @@
         >
           Neustart
         </button>
+      </div>
+      <!--      Credits in Fußzeile -->
+      <div
+        class="fixed left-4 bottom-4 flex gap-4 lg:gap-12 text-gray-400 text-xs"
+      >
+        <p>created by lukaio - lukas.schaab@lukaio.de</p>
+        <p>idea by Thinkpott - info@thinkpott.com</p>
       </div>
     </div>
   </body>
