@@ -28,6 +28,12 @@ const dialogBox = document.getElementById("dialogBox");
 const theBigDOM = document.getElementById("theBigDOM");
 const korrekteVersucheDOM = document.getElementById("korrekteVersucheDOM");
 const fehlVersucheDOM = document.getElementById("fehlVersucheDOM");
+const trophy1 = document.getElementById("trophy1");
+const trophy2 = document.getElementById("trophy2");
+const trophy3 = document.getElementById("trophy3");
+const cross1 = document.getElementById("cross1");
+const cross2 = document.getElementById("cross2");
+const cross3 = document.getElementById("cross3");
 const winnerDOM = document.getElementById("winnerDOM");
 const loserDOM = document.getElementById("loserDOM");
 
@@ -44,6 +50,8 @@ const rotationsGhostParent = [
 ];
 let soundInteration = 0;
 const ghostSoundMemory = ["#ghostSound1", "#ghostSound2", "#ghostSound3"];
+const trophys = [trophy1, trophy2, trophy3];
+const crosses = [cross1, cross2, cross3];
 
 //Ladeprozess abwarten
 scene.addEventListener("loaded", () => {
@@ -55,7 +63,6 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   ambienceSound.play();
-  scene.setAttribute("xr-mode-ui", "XRMode: ar; enabled: true")
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -113,14 +120,14 @@ function VorhangOeffnen(vorhangName) {
 const SchreibeDialog = (dialogtext) => (dialogBox.innerHTML = dialogtext);
 
 const KorrekterVersuch = () => {
+  trophys[korrektGeraten].setAttribute("src", "src/img/trophy.png");
   korrektGeraten++;
-  korrekteVersucheDOM.innerHTML = "Richtig geraten: " + korrektGeraten;
   SchreibeDialog("Du hast mich gefunden. Klasse gemacht!");
 };
 
 const Fehlversuch = () => {
+  crosses[falschGeraten].src = "src/img/red-cross.png";
   falschGeraten++;
-  fehlVersucheDOM.innerHTML = "Falsch geraten: " + falschGeraten;
   SchreibeDialog(
     "Du hast den falschen Vorhang erwischt. Höre noch mal genauer hin!"
   );
@@ -149,6 +156,8 @@ function VorhangHandler() {
     SchreibeDialog("");
     VorhangOeffnen(this);
     setTimeout(() => {
+      KorrekterVersuch();
+      checkGameState();
       ghost3D.components.sound.stopSound();
       successSound.play();
       ghost3D.setAttribute(
@@ -158,8 +167,6 @@ function VorhangHandler() {
     }, 5000);
     setTimeout(() => {
       VorhangSchließen(this);
-      KorrekterVersuch();
-      checkGameState();
     }, 11000);
     setTimeout(() => {
       hideGhost();

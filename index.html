@@ -16,7 +16,7 @@
     <a-scene
       id="scene"
       class=""
-      xr-mode-ui="XRMode: ar; enabled: false"
+      xr-mode-ui="XRMode: ar"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
       xstats
@@ -208,28 +208,6 @@
           sound="src: #krabbenSound; loop: false; volume: 5"
         ></a-gltf-model>
       </a-entity>
-
-      <!--       <a-entity
-        id="soundBall"
-        geometry="primitive: sphere; radius: 0.23"
-        position="-4 0.3 0"
-        sound__birdwhistle3d="src: #birdSound; autoplay: true; loop: true"
-        animation
-      ></a-entity> -->
-
-      <!--       <a-video position="0 1 -4" scale="2 3 2"></a-video>
-      <a-image
-        position="0 1 4"
-        rotation="0 180 0"
-        scale="3 2 3"
-        src="src\egg-2187345_1280.png"
-      ></a-image>
-      <a-image
-        position="4 1 0"
-        scale="2 1.5 1"
-        rotation="0 90 0"
-        src="src\kermit-2687975_1280.jpg"
-      ></a-image> -->
     </a-scene>
 
     <!-- introDOM -->
@@ -256,12 +234,22 @@
         </button>
       </div>
 
+      <!--      Credits in Fußzeile -->
+      <div
+        class="fixed left-4 bottom-4 flex gap-4 lg:gap-12 text-gray-400 text-xs"
+      >
+        <p>created by lukaio - lukas.schaab@lukaio.de</p>
+        <p>idea by Thinkpott - info@thinkpott.com</p>
+      </div>
+
       <!-- Credits über Button einblendbar -->
       <button
         id="creditsButton"
         class="fixed top-4 left-4 p-2 px-5 rounded-xl lg:text-2xl text-gray-100"
-        onclick=toggleCredits()
-        >Credits</button>
+        onclick="toggleCredits()"
+      >
+        Credits
+      </button>
       <div
         id="creditDOM"
         class="fixed left-4 top-16 max-w-[92vw] max-h-[85vh] lg:w-1/3 flex flex-col p-4 gap-2 bg-white rounded-xl text-gray-900 overflow-auto hidden"
@@ -300,26 +288,46 @@
           </p>
           <p class="font-semibold">Musik Hintergrund</p>
           <p class="col-span-4">
-            "Horror ambience 10" (https://freesound.org/people/klankbeeld/sounds/133100/?) by klankbeeld is licensed under Creative Commons Attribution
+            "Horror ambience 10"
+            (https://freesound.org/people/klankbeeld/sounds/133100/?) by
+            klankbeeld is licensed under Creative Commons Attribution
             (http://creativecommons.org/licenses/by/4.0/).
           </p>
           <p class="font-semibold">Sound Dinosaurier</p>
           <p class="col-span-4">
-            "Dinosaur_Loud Roar" (https://freesound.org/people/CGEffex/sounds/89549/?) by CGEffex is licensed under Creative Commons Attribution
+            "Dinosaur_Loud Roar"
+            (https://freesound.org/people/CGEffex/sounds/89549/?) by CGEffex is
+            licensed under Creative Commons Attribution
             (http://creativecommons.org/licenses/by/4.0/).
           </p>
           <p class="font-semibold">Sound Lachen</p>
           <p class="col-span-4">
-            "laugh" (https://freesound.org/people/klankbeeld/sounds/126113/) by CGEffex is licensed under Creative Commons Attribution
+            "laugh" (https://freesound.org/people/klankbeeld/sounds/126113/) by
+            CGEffex is licensed under Creative Commons Attribution
             (http://creativecommons.org/licenses/by/4.0/).
           </p>
           <p class="font-semibold">Sound Richtig geraten</p>
           <p class="col-span-4">
-            "Jingle_Achievement_00" (https://freesound.org/people/LittleRobotSoundFactory/sounds/270404/) by LittleRobotSoundFactory is licensed under Creative Commons Attribution
-            (http://creativecommons.org/licenses/by/4.0/).
+            "Jingle_Achievement_00"
+            (https://freesound.org/people/LittleRobotSoundFactory/sounds/270404/)
+            by LittleRobotSoundFactory is licensed under Creative Commons
+            Attribution (http://creativecommons.org/licenses/by/4.0/).
           </p>
+          <p class="font-semibold">Icon Fehlversuch</p>
+          <a
+            class="col-span-4"
+            href="https://www.flaticon.com/free-icons/red-cross"
+            title="red cross icons"
+            >Red cross icons created by IYIKON - Flaticon</a
+          >
+          <p class="font-semibold">Icon Pokal</p>
+          <a
+            class="col-span-4"
+            href="https://www.flaticon.com/free-icons/trophy"
+            title="trophy icons"
+            >Trophy icons created by Freepik - Flaticon</a
+          >
         </div>
-        
       </div>
     </div>
 
@@ -328,9 +336,34 @@
       id="overlay"
       class="flex flex-col justify-between items-center h-full text-gray-100"
     >
-      <div>
-        <p id="korrekteVersucheDOM">Richtig geraten: 0</p>
-        <p id="fehlVersucheDOM">Falsch geraten: 0</p>
+      <div class="w-full flex justify-between">
+        <div class="flex gap-2">
+          <img id="trophy1" class="w-8" src="src\img\trophy_bg.png" alt="" />
+          <img id="trophy2" class="w-8" src="src\img\trophy_bg.png" alt="" />
+          <img id="trophy3" class="w-8" src="src\img\trophy_bg.png" alt="" />
+        </div>
+        <div>
+          <div class="flex gap-2">
+            <img
+              id="cross1"
+              class="w-8"
+              src="src\img\red-cross_bg.png"
+              alt=""
+            />
+            <img
+              id="cross2"
+              class="w-8"
+              src="src\img\red-cross_bg.png"
+              alt=""
+            />
+            <img
+              id="cross3"
+              class="w-8"
+              src="src\img\red-cross_bg.png"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
       <div class="p-2 px-4 bg-black bg-opacity-20 rounded-xl mb-16">
         <h1 id="dialogBox" class="text-center">Hallo Hallo</h1>
@@ -338,8 +371,9 @@
       <!-- WinnerDOM -->
       <div
         id="winnerDOM"
-        class="fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden"
+        class="fixed top-0 left-0 w-screen h-screen bg-black hidden flex-col gap-8 justify-center items-center z-50 "
       >
+        <img class="" src="src\img\trophy.png" alt="">
         <h1 class="text-gray-100 text-center text-5xl">
           Du hast gewonnen, Glückwunsch!
         </h1>
@@ -357,8 +391,9 @@
         id="loserDOM"
         class="fixed top-0 left-0 w-screen h-screen bg-black flex-col gap-8 justify-center items-center z-50 hidden"
       >
+        <img class="" src="src\img\red-cross.png" alt="">
         <h1 class="text-gray-100 text-center text-5xl">
-          Du hast verloren. Probier es noch mal!
+          Du hast verloren. Probiere es noch mal!
         </h1>
         <button
           id="startButton"
