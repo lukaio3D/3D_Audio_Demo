@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Audio Experience</title>
+    <title>3D Audio Demo</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
@@ -19,49 +19,75 @@
       xr-mode-ui="XRMode: xr"
       webxr="optionalFeatures: dom-overlay; overlayElement: #overlay; referenceSpaceType: local-floor"
       loading-screen="dotsColor: red; backgroundColor: black"
-      stats
+      xstats
     >
       <a-assets>
         <audio
           id="ambienceSound"
-          src="src/133100__klankbeeld__horror-ambience-10.mp3"
+          src="src\audio\133100__klankbeeld__horror-ambience-10.mp3"
           preload="auto"
           loop
         ></audio>
         <audio
-          id="ghostSound"
-          src="src\Audioguide_Questenberg_-_Pfeifen-3x-Teilnehmer_verloren.mp3"
+          id="fireworksSound"
+          src="src\audio\254836__waxsocks__fireworks-display-2.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+          id="successSound"
+          src="src\audio\270404__littlerobotsoundfactory__jingle_achievement_00.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+          id="ghostSound1"
+          src="src\audio\175944__litruv__ghost-whispers.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+          id="ghostSound2"
+          src="src\audio\380511__haralddeluca__horror-ghost-low-pitched-sound.mp3"
+          preload="auto"
+        ></audio>
+        <audio
+          id="ghostSound3"
+          src="src\audio\175205__minigunfiend__scary-creaking-knocking-wood.mp3"
           preload="auto"
         ></audio>
         <audio
           id="dinosaurSound"
-          src="src\89549__cgeffex__dinosaur_loud-roar.mp3"
+          src="src\audio\89549__cgeffex__dinosaur_loud-roar.mp3"
           preload="auto"
         ></audio>
         <audio
           id="robotSound"
-          src="src\397253__screamstudio__robot.mp3"
+          src="src\audio\397253__screamstudio__robot.mp3"
           preload="auto"
         ></audio>
         <audio
           id="krabbenSound"
-          src="src\126113__klankbeeld__laugh.mp3"
+          src="src\audio\126113__klankbeeld__laugh.mp3"
           preload="auto"
         ></audio>
-        <a-asset-item id="ghostGLB" src="src\ghost_w_tophat.glb"></a-asset-item>
+        <a-asset-item
+          id="ghostGLB"
+          src="src\glb\ghost_w_tophat.glb"
+        ></a-asset-item>
         <a-asset-item
           id="VorhangGLB"
-          src="src\TheaterVorhang.glb"
+          src="src\glb\TheaterVorhang.glb"
         ></a-asset-item>
-        <a-asset-item id="grabbyGLB" src="src\Grabby.glb"></a-asset-item>
-        <a-asset-item id="robotGLB" src="src\FlyingRobot.glb"></a-asset-item>
+        <a-asset-item id="grabbyGLB" src="src\glb\Grabby.glb"></a-asset-item>
+        <a-asset-item
+          id="robotGLB"
+          src="src\glb\FlyingRobot.glb"
+        ></a-asset-item>
         <a-asset-item
           id="dinosaurGLB"
-          src="src\BitingDinosaur.glb"
+          src="src\glb\BitingDinosaur.glb"
         ></a-asset-item>
       </a-assets>
 
-      <a-camera>
+      <a-camera look-controls="pointerLockEnabled: true">
         <a-cursor
           cursor="fuse: false"
           geometry="primitive: ring; radiusInner: 0; radiusOuter: 0.005"
@@ -152,7 +178,6 @@
           position="0 1 -1.5"
           rotation="0 0 0"
           scale="0.3 0.3 0.3"
-          sound="src: #ghostSound; loop: true;"
           animation-mixer
         ></a-gltf-model>
         <a-gltf-model
@@ -212,7 +237,7 @@
       id="introDOM"
       class="overlay fixed top-0 left-0 w-screen h-screen bg-black flex flex-col gap-8 justify-center items-center z-40"
     >
-      <h1 class="text-gray-100 text-center text-5xl">3D Audio Experience</h1>
+      <h1 class="text-gray-100 text-center text-5xl">3D Audio Demo</h1>
       <div class="h-16">
         <p id="loadingNotice" class="text-gray-100">Die Anwendung lädt</p>
         <button

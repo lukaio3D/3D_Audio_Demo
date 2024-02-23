@@ -2,6 +2,7 @@
 
 //3D Elemente
 const ambienceSound = document.getElementById("ambienceSound");
+const successSound = document.getElementById("successSound");
 const scene = document.getElementById("scene");
 const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
@@ -40,6 +41,8 @@ const Vorhaenge = [Vorhang1, Vorhang2, Vorhang3, Vorhang4];
 const rotationsGhostParent = [
   -540, -450, -360, -270, -180, -90, 0, 90, 180, 270, 360, 450, 540,
 ];
+let soundInteration = 0;
+const ghostSoundMemory = ["#ghostSound1", "#ghostSound2", "#ghostSound3"];
 
 //Ladeprozess abwarten
 scene.addEventListener("loaded", () => {
@@ -51,7 +54,6 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   ambienceSound.play();
-  ghost3D.components.sound.playSound();
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -68,13 +70,21 @@ startButton.onclick = () => {
   }, 13000);
   setTimeout(() => {
     hideGhost();
-    ambienceSound.pause();
   }, 19500);
 };
 
 sceneDOM.style.visibility = "none";
 
 //Funktionen
+const playGhostSound = () => {
+  ghost3D.setAttribute(
+    "sound",
+    "src: " + ghostSoundMemory[soundInteration] + "; loop: true;"
+  );
+  ghost3D.components.sound.playSound();
+  soundInteration++;
+};
+
 const VorhangSchließen = (vorhangName) => {
   vorhangName.setAttribute("animation-mixer", {
     clip: "VorhangZu",
@@ -130,6 +140,8 @@ function VorhangHandler() {
     SchreibeDialog("");
     VorhangOeffnen(this);
     setTimeout(() => {
+      ghost3D.components.sound.stopSound();
+      successSound.play();
       ghost3D.setAttribute(
         "animation__position",
         "property: position; to: 0 1 -1.5; easing: easeInOutQuad; dur: 5000;"
@@ -266,6 +278,8 @@ function hideGhost() {
       console.log("Es wurde kein Vorhang als korrekt zugewiesen");
   }
   SchreibeDialog("Ich suche mein Versteck, höre genau hin!");
+  ambienceSound.pause();
+  playGhostSound();
   ghost3D.object3D.visible = false;
   ghost3D.removeAttribute("animation-mixer");
   ghost3D.setAttribute(
