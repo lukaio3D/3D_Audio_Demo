@@ -21,7 +21,7 @@
       loading-screen="dotsColor: red; backgroundColor: black"
       xstats
     >
-      <a-assets timeout="30000">
+      <a-assets >
         <audio
           id="ambienceSound"
           src="src\audio\133100__klankbeeld__horror-ambience-10.mp3"
@@ -359,12 +359,12 @@
           </div>
         </div>
       </div>
-      <div class="p-2 px-4 bg-black bg-opacity-20 rounded-xl mb-16">
+      <div class="p-2 px-4 bg-black bg-opacity-20 rounded-xl mb-16 flex flex-col justify-center">
         <h1 id="dialogBox" class="text-center">Hallo Hallo</h1>
         <button
         id="sceneDOMButton"
-        onclick=playGhostSound()
-        class="bg-gray-900 p-2 px-5 rounded-xl text-xl lg:text-2xl text-gray-100 "
+        onclick=hideGhost()
+        class=" p-2 px-5 text-xl lg:text-2xl text-gray-100 hidden"
       >
         Start
       </button>

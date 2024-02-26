@@ -79,7 +79,8 @@ startButton.onclick = () => {
     );
   }, 13000);
   setTimeout(() => {
-    hideGhost();
+    SchreibeDialog("")
+    sceneDOMButton.style.display = "block";
   }, 19500);
 };
 
@@ -257,6 +258,7 @@ function VorhangHandler() {
 }
 
 function hideGhost() {
+  sceneDOMButton.style.display = "none"
   let randomRotation =
     rotationsGhostParent[
       Math.floor(Math.random() * rotationsGhostParent.length)
@@ -301,6 +303,7 @@ function hideGhost() {
   }
   SchreibeDialog("Ich suche mein Versteck, höre genau hin!");
   ambienceSound.pause();
+  playGhostSound();
   ghost3D.object3D.visible = false;
   ghost3D.removeAttribute("animation-mixer");
   ghost3D.setAttribute(
