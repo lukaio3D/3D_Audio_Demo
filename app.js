@@ -63,6 +63,7 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   ambienceSound.play();
+  loadGhostSound();
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -93,14 +94,15 @@ const toggleCredits = () => {
 };
 
 const playGhostSound = () => {
+    ghost3D.components.sound.playSound();
+    soundInteration++;
+};
+
+const loadGhostSound = () => {
   ghost3D.setAttribute(
     "sound",
     "src: " + ghostSoundMemory[soundInteration] + "; loop: true;"
   );
-  setTimeout(() => {
-    ghost3D.components.sound.playSound();
-    soundInteration++;
-  }, 500);
 };
 
 const VorhangSchließen = (vorhangName) => {
@@ -161,6 +163,7 @@ function VorhangHandler() {
       KorrekterVersuch();
       checkGameState();
       ghost3D.components.sound.stopSound();
+      loadGhostSound();
       successSound.play();
       ghost3D.setAttribute(
         "animation__position",
