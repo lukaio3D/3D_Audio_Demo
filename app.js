@@ -25,6 +25,7 @@ const sceneDOM = document.getElementById("overlay");
 const startButton = document.getElementById("startButton");
 const loadingNotice = document.getElementById("loadingNotice");
 const dialogBox = document.getElementById("dialogBox");
+const sceneDOMButton = document.getElementById("sceneDOMButton")
 const theBigDOM = document.getElementById("theBigDOM");
 const korrekteVersucheDOM = document.getElementById("korrekteVersucheDOM");
 const fehlVersucheDOM = document.getElementById("fehlVersucheDOM");
@@ -63,7 +64,6 @@ scene.addEventListener("loaded", () => {
 startButton.onclick = () => {
   introDOM.remove();
   ambienceSound.play();
-  loadGhostSound();
   sceneDOM.style.visibility = "flex";
   SchreibeDialog(
     "Hallo Besucher, ich mache mich gleich unsichtbar und verstecke mich hinter einem Vorhang."
@@ -94,15 +94,17 @@ const toggleCredits = () => {
 };
 
 const playGhostSound = () => {
-    ghost3D.components.sound.playSound();
-    soundInteration++;
-};
-
-const loadGhostSound = () => {
   ghost3D.setAttribute(
     "sound",
     "src: " + ghostSoundMemory[soundInteration] + "; loop: true;"
   );
+    ghost3D.components.sound.playSound();
+    soundInteration++;
+    console.log("Play Ghost Sound")
+};
+
+const loadGhostSound = () => {
+
 };
 
 const VorhangSchließen = (vorhangName) => {
@@ -163,7 +165,6 @@ function VorhangHandler() {
       KorrekterVersuch();
       checkGameState();
       ghost3D.components.sound.stopSound();
-      loadGhostSound();
       successSound.play();
       ghost3D.setAttribute(
         "animation__position",
@@ -300,7 +301,6 @@ function hideGhost() {
   }
   SchreibeDialog("Ich suche mein Versteck, höre genau hin!");
   ambienceSound.pause();
-  playGhostSound();
   ghost3D.object3D.visible = false;
   ghost3D.removeAttribute("animation-mixer");
   ghost3D.setAttribute(
