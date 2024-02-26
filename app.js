@@ -97,8 +97,10 @@ const playGhostSound = () => {
     "sound",
     "src: " + ghostSoundMemory[soundInteration] + "; loop: true;"
   );
-  ghost3D.components.sound.playSound();
-  soundInteration++;
+  setTimeout(() => {
+    ghost3D.components.sound.playSound();
+    soundInteration++;
+  }, 500);
 };
 
 const VorhangSchließen = (vorhangName) => {
