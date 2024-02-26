@@ -3,6 +3,7 @@
 //3D Elemente
 const ambienceSound = document.getElementById("ambienceSound");
 const successSound = document.getElementById("successSound");
+const winningSound = document.getElementById("winningSound")
 const scene = document.getElementById("scene");
 const Vorhang1 = document.getElementById("Vorhang1");
 const Vorhang2 = document.getElementById("Vorhang2");
@@ -97,14 +98,10 @@ const toggleCredits = () => {
 const playGhostSound = () => {
   ghost3D.setAttribute(
     "sound",
-    "src: " + ghostSoundMemory[soundInteration] + "; loop: true;"
+    "src: " + ghostSoundMemory[soundInteration] + "; loop: true; rolloffFactor: 3"
   );
     ghost3D.components.sound.playSound();
     soundInteration++;
-};
-
-const loadGhostSound = () => {
-
 };
 
 const VorhangSchließen = (vorhangName) => {
@@ -171,7 +168,6 @@ function VorhangHandler() {
     VorhangOeffnen(this);
     setTimeout(() => {
       KorrekterVersuch();
-      checkGameState();
       ghost3D.components.sound.stopSound();
       successSound.play();
       ghost3D.setAttribute(
@@ -180,11 +176,12 @@ function VorhangHandler() {
       );
     }, 5000);
     setTimeout(() => {
+      checkGameState();
       VorhangSchließen(this);
     }, 11000);
     setTimeout(() => {
       hideGhost();
-    }, 15000);
+    }, 13000);
   }
   //Vorhang mit Dino gewählt
   else if (this.id === vorhangMitDino) {
@@ -315,22 +312,23 @@ function hideGhost() {
   ghost3D.removeAttribute("animation-mixer");
   ghost3D.setAttribute(
     "animation__position",
-    "property: position; to: 0 1 -4; easing: easeInOutQuad; dur: 7000"
+    "property: position; to: 0 1 -4; easing: easeInOutQuad; dur: 10000"
   );
   ghostParent.setAttribute(
     "animation__rotation",
     "property: rotation; to: 0 " +
       randomRotation +
-      " 0 ; easing: easeInOutQuad; dur: 7000"
+      " 0 ; easing: easeInOutQuad; dur: 10000"
   );
   setTimeout(() => {
     aktiviereVorhaenge();
     SchreibeDialog("Bin versteckt. Mach dich auf die Suche!");
-  }, 7000);
+  }, 10000);
 }
 
 const checkGameState = () => {
   if (korrektGeraten >= 3) {
+    winningSound.play()
     winnerDOM.style.display = "flex";
   } else if (falschGeraten >= 3) {
     loserDOM.style.display = "flex";
