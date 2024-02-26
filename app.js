@@ -79,8 +79,8 @@ startButton.onclick = () => {
     );
   }, 13000);
   setTimeout(() => {
-    SchreibeDialog("")
     sceneDOMButton.style.display = "block";
+    SchreibeDialog("")
   }, 19500);
 };
 
@@ -101,7 +101,6 @@ const playGhostSound = () => {
   );
     ghost3D.components.sound.playSound();
     soundInteration++;
-    console.log("Play Ghost Sound")
 };
 
 const loadGhostSound = () => {
@@ -124,7 +123,15 @@ function VorhangOeffnen(vorhangName) {
   });
 }
 
-const SchreibeDialog = (dialogtext) => (dialogBox.innerHTML = dialogtext);
+const SchreibeDialog = (dialogtext) => {
+  if(dialogtext || sceneDOMButton.style.display === "block"){
+    dialogBoxParent.style.display = "block"
+    dialogBox.innerHTML = dialogtext
+  }
+  else {
+    dialogBoxParent.style.display = "none"
+  }
+};
 
 const KorrekterVersuch = () => {
   trophys[korrektGeraten].setAttribute("src", "src/img/trophy.png");
